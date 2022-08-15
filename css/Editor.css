@@ -1,0 +1,3 @@
+.nav-tabs button.active {
+    background-color: var(--bs-secondary) !important;
+}
