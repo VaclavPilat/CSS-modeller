@@ -20,9 +20,11 @@ class Settings extends React.Component {
                 </ul>
                 <div class="tab-content border-top border-start border-secondary flex-grow-1 p-3 overflow-auto">
                     <div class="tab-pane fade show active" id={IDs[0]}>
-                        <Vector3 name="Position" />
-                        <Vector3 name="Rotation" />
-                        <Vector3 name="Size" />
+                        <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
+                        <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
+                        <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
+                        <VectorProperty name={"Size"} x={100} y={100} locked={false} />
+                        <CustomProperty name={"background-color"} value={"red"} />
                     </div>
                     <div class="tab-pane fade" id={IDs[1]}>
                         HTML Editor
