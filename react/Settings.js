@@ -20,7 +20,9 @@ class Settings extends React.Component {
                 </ul>
                 <div class="tab-content border-top border-start border-secondary flex-grow-1 p-3 overflow-auto">
                     <div class="tab-pane fade show active" id={IDs[0]}>
-                        Element Properties
+                        <Vector3 name="Position" />
+                        <Vector3 name="Rotation" />
+                        <Vector3 name="Size" />
                     </div>
                     <div class="tab-pane fade" id={IDs[1]}>
                         HTML Editor
