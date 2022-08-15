@@ -25,6 +25,10 @@ class Settings extends React.Component {
                         <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
                         <VectorProperty name={"Size"} x={100} y={100} locked={false} />
                         <CustomProperty name={"background-color"} value={"red"} />
+                        <CustomProperty name={"border"} value={"3px solid black"} />
+                        <div class="m-0 p-0 d-grid">
+                            <button class="btn btn-primary">Add Custom Property</button>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id={IDs[1]}>
                         HTML Editor
