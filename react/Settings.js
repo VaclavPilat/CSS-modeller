@@ -22,7 +22,7 @@ class Settings extends React.Component {
                         <button class="nav-link text-white border-secondary" data-bs-toggle="tab" data-bs-target={"#" + IDs[1]}>HTML Editor</button>
                     </li>
                 </ul>
-                <div class="tab-content border-top border-start border-secondary flex-grow-1 p-3 overflow-auto">
+                <div class="tab-content border-top border-start border-secondary flex-grow-1 p-3 overflow-auto bg-secondary" style={{"--bs-bg-opacity": .2}}>
                     <div class="tab-pane fade show active" id={IDs[0]}>
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                         <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
