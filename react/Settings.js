@@ -1,12 +1,5 @@
 // Settings part of application
 class Settings extends React.Component {
-    // Constructor
-    constructor(){
-        super();
-        this.state = {
-            HTMLEditorRef: React.createRef()
-        }
-    }
     // Rendering component
     render(){
         var IDs = [];
@@ -32,15 +25,11 @@ class Settings extends React.Component {
                         <CustomProperty name={"border"} value={"3px solid black"} />
                         <NewPropertyButtons />
                     </div>
-                    <div class="tab-pane fade" id={IDs[1]} ref={this.state.HTMLEditorRef}>
-                        HTML Editor
+                    <div class="tab-pane fade" id={IDs[1]}>
+                        {this.props.HTML}
                     </div>
                 </div>
             </div>
         );
-    }
-    // Code run after the component is mounted
-    componentDidMount() {
-        this.state.HTMLEditorRef.current.innerText = this.props.ModellerRef.current.innerHTML;
     }
 }
