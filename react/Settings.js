@@ -36,10 +36,16 @@ class Settings extends React.Component {
         this.editor = ace.edit("editor");
         this.editor.setTheme("ace/theme/monokai");
         this.editor.session.setMode("ace/mode/html");
-        this.editor.setValue(this.props.HTML);
+        this.editorBeautify = ace.require("ace/ext/beautify");
+        this.updateEditorContent();
     }
     // Changing editor content after this component is updated
     componentDidUpdate() {
+        this.updateEditorContent();
+    }
+    // Updating editor content
+    updateEditorContent = () => {
         this.editor.setValue(this.props.HTML);
+        this.editorBeautify.beautify(this.editor.session);
     }
 }
