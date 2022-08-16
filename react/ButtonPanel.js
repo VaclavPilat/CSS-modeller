@@ -14,7 +14,7 @@ class ButtonPanel extends React.Component {
     render(){
         return (
             <div class="m-0 p-2 w-100 flex-shrink-1 d-flex bg-secondary border-top border-secondary bg-opacity-25">
-                <button class="btn btn-success me-2" title="Add New Square" onClick={this.props.addNewSquare}>
+                <button class="btn btn-success me-2" title="Add New Plane" onClick={this.props.addNewPlane}>
                     <i class="bi bi-square"></i>
                 </button>
                 <button class="btn btn-success me-auto" title="Add New Cube">
