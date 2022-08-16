@@ -34,7 +34,10 @@ class Settings extends React.Component {
     componentDidMount() {
         ace.config.set('basePath', "https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.5/");
         this.editor = ace.edit("editor");
-        this.editor.setTheme("ace/theme/monokai");
+        document.getElementById("editor").style.fontSize = "1em";
+        this.editor.setTheme("ace/theme/tomorrow_night_bright");
+        this.editor.setShowPrintMargin(false);
+        this.editor.renderer.setShowGutter(false);
         this.editor.session.setMode("ace/mode/html");
         this.editorBeautify = ace.require("ace/ext/beautify");
         this.updateEditorContent();
