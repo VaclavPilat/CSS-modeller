@@ -58,7 +58,7 @@ class NewPropertyButtons extends React.Component {
                         <li><button class="dropdown-item">border</button></li>
                     </ul>
                 </div>
-                <button class="btn btn-info col m-0 ms-2">Add Custom Property</button>
+                <button class="btn btn-primary col m-0 ms-2">Add Custom Property</button>
             </div>
         );
     }

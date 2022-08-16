@@ -5,7 +5,9 @@ class App extends React.Component {
         super();
         this.state = {
             HTML: `<div style="width: 400px; height: 400px;"></div>`,
-            ModellerRef: React.createRef()
+            ModellerRef: React.createRef(),
+            modellerCol: 8,
+            settingsCol: 4
         }
     }
     // Adding new square
@@ -16,12 +18,19 @@ class App extends React.Component {
             HTML: this.state.ModellerRef.current.innerHTML
         });
     }
+    // Change page layout
+    changePageLayout = (modellerCol, settingsCol) => {
+        this.setState({
+            modellerCol: modellerCol,
+            settingsCol: settingsCol
+        });
+    }
     // Rendering component
     render(){
         return (
             <div class="m-0 p-0 w-100 h-100 row text-white">
-                <Modeller HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} setAppState={this.setState} addNewSquare={this.addNewSquare} />
-                <Settings HTML={this.state.HTML} />
+                <Modeller col={this.state.modellerCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} setAppState={this.setState} addNewSquare={this.addNewSquare} />
+                <Settings col={this.state.settingsCol} HTML={this.state.HTML} changePageLayout={this.changePageLayout} />
             </div>
         );
     }
