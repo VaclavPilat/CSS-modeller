@@ -2,21 +2,18 @@
 class Settings extends React.Component {
     // Rendering component
     render(){
-        var IDs = [];
-        for(var i = 0; i < 3; i++)
-            IDs.push(createUniqueID())
         return (
             <div class={"m-0 p-0 col-" + this.props.col + " d-flex flex-column"}>
                     <ul class="nav nav-tabs border-0 flex-shrink-1">
                         <li class="nav-item">
-                            <button class="nav-link text-white border-secondary active" data-bs-toggle="tab" data-bs-target={"#" + IDs[0]}>Element Properties</button>
+                            <button class="nav-link text-white border-secondary active" data-bs-toggle="tab" data-bs-target="#properties">Element Properties</button>
                         </li>
                         <li class="nav-item">
                             <button class="nav-link text-white border-secondary" data-bs-toggle="tab" data-bs-target={"#editor"}>HTML Editor</button>
                         </li>
                     </ul>
                     <div class="tab-content border-top border-start border-secondary flex-grow-1 p-0 overflow-auto bg-secondary bg-opacity-25 position-relative">
-                        <div class="tab-pane fade show active p-3" id={IDs[0]}>
+                        <div class="tab-pane fade show active p-3" id="properties">
                             <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                             <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
                             <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
