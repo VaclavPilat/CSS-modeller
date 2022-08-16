@@ -14,9 +14,6 @@ class Settings extends React.Component {
                     <li class="nav-item">
                         <button class="nav-link text-white border-secondary" data-bs-toggle="tab" data-bs-target={"#" + IDs[1]}>HTML Editor</button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link text-white border-secondary" data-bs-toggle="tab" data-bs-target={"#" + IDs[2]}>CSS Editor</button>
-                    </li>
                 </ul>
                 <div class="tab-content border-top border-start border-secondary flex-grow-1 p-3 overflow-auto">
                     <div class="tab-pane fade show active" id={IDs[0]}>
@@ -30,9 +27,6 @@ class Settings extends React.Component {
                     </div>
                     <div class="tab-pane fade" id={IDs[1]}>
                         HTML Editor
-                    </div>
-                    <div class="tab-pane fade" id={IDs[2]}>
-                        CSS Editor
                     </div>
                 </div>
 
