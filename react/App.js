@@ -3,23 +3,15 @@ class App extends React.Component {
     // Constructor
     constructor(){
         super();
-        var defaultHTML = `<div class="model-scene" style="width: 400px; height: 400px;"></div>`;
         this.state = {
-            defaultHTML: defaultHTML,
-            HTML: defaultHTML,
+            HTML: `<div class="model-scene" style="width: 400px; height: 400px;"></div>`,
             ModellerRef: React.createRef(),
             modellerCol: 8,
             settingsCol: 4
         }
     }
-    // Resetting HTML to default if it is broken
-    resetToDefaultIfNeeded = () => {
-        if(this.state.ModellerRef.current.children.length != 1)
-            this.state.ModellerRef.current.innerHTML = this.state.defaultHTML;
-    }
     // Adding new plane
     addNewPlane = () => {
-        this.resetToDefaultIfNeeded();
         var HTML = `<div class="model-plane" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`;
         this.state.ModellerRef.current.children[0].insertAdjacentHTML('beforeend', HTML);
         this.setState({
@@ -31,12 +23,6 @@ class App extends React.Component {
         this.setState({
             modellerCol: modellerCol,
             settingsCol: settingsCol
-        });
-    }
-    // Saving new HTML code
-    saveNewCode = (HTML) => {
-        this.setState({
-            HTML: HTML
         });
     }
     // Rendering component
