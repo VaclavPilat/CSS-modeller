@@ -3,7 +3,7 @@ class Settings extends React.Component {
     // Rendering component
     render(){
         return (
-            <div class={"m-0 p-0 col-" + this.props.col + " overflow-auto position-relative bg-secondary bg-opacity-25 border-start border-secondary"}>
+            <div class={"m-0 p-0 overflow-auto position-relative bg-secondary bg-opacity-25 border-start border-secondary " + this.props.col}>
                 <Accordion>
                     <AccordionItem name="Hierarchy" ID="hierarchy">
                         {this.props.HTML}

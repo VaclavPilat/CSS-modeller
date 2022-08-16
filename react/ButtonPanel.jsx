@@ -1,14 +1,17 @@
 // Panel with buttons
 class ButtonPanel extends React.Component {
     // Changing page layout
+    setModellerFill = () => {
+        this.props.changePageLayout("col-12", "d-none");
+    }
     setModellerBigger = () => {
-        this.props.changePageLayout(8, 4);
+        this.props.changePageLayout("col-8", "col-4");
     }
     setModellerEqual = () => {
-        this.props.changePageLayout(6, 6);
+        this.props.changePageLayout("col-6", "col-6");
     }
     setModellerSmaller = () => {
-        this.props.changePageLayout(4, 8);
+        this.props.changePageLayout("col-4", "col-8");
     }
     // Rendering component
     render(){
@@ -20,14 +23,17 @@ class ButtonPanel extends React.Component {
                 <button class="btn btn-success me-auto" title="Add New Cube">
                     <i class="bi bi-box"></i>
                 </button>
-                <button class="btn btn-info me-2" title="Change Column Size" onClick={this.setModellerSmaller}>
+                <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerSmaller}>
                     <i class="bi bi-layout-sidebar"></i>
                 </button>
-                <button class="btn btn-info me-2" title="Change Column Size" onClick={this.setModellerEqual}>
+                <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerEqual}>
                     <i class="bi bi-layout-split"></i>
                 </button>
-                <button class="btn btn-info" title="Change Column Size" onClick={this.setModellerBigger}>
+                <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerBigger}>
                     <i class="bi bi-layout-sidebar-reverse"></i>
+                </button>
+                <button class="btn btn-info" title="Change Page Layout" onClick={this.setModellerFill}>
+                    <i class="bi bi-square"></i>
                 </button>
             </div>
         );
