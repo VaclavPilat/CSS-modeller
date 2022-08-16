@@ -32,4 +32,8 @@ class Settings extends React.Component {
             </div>
         );
     }
+    // Code run after the component is mounted
+    componentDidMount() {
+        console.log(this.props.ModellerRef.current.innerHTML);
+    }
 }
