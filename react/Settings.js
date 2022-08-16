@@ -29,7 +29,6 @@ class Settings extends React.Component {
                         HTML Editor
                     </div>
                 </div>
-
             </div>
         );
     }

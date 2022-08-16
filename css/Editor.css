@@ -1,3 +1,7 @@
 .nav-tabs button.active {
     background-color: var(--bs-secondary) !important;
 }
+
+#modeller > .scene {
+    margin: auto;
+}
