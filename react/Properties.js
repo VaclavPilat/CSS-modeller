@@ -47,19 +47,17 @@ class CustomProperty extends React.Component {
 class NewPropertyButtons extends React.Component {
     // Rendering component
     render(){
-        var ID = createUniqueID();
         return(
-            <div class="row m-0 p-0">
-                <div class="dropdown col m-0 me-2 p-0">
-                    <button class="btn btn-primary dropdown-toggle w-100" data-bs-toggle="dropdown">Add Frequent Property</button>
-                    <ul class="dropdown-menu dropdown-menu-dark bg-dark w-100 mx-0">
-                        <li><button class="dropdown-item">background-color</button></li>
-                        <li><button class="dropdown-item">opacity</button></li>
-                        <li><button class="dropdown-item">border</button></li>
-                    </ul>
-                </div>
-                <button class="btn btn-primary col m-0 ms-2">Add Custom Property</button>
+            <div class="input-group m-0 w-100">
+                <button type="button" class="btn btn-primary flex-grow-1">Add New Property</button>
+                <button type="button" class="btn btn-primary flex-shrink-1 dropdown-toggle dropdown-toggle-split px-3" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                    <li><button class="dropdown-item">background-color</button></li>
+                    <li><button class="dropdown-item">border</button></li>
+                    <li><button class="dropdown-item">opacity</button></li>
+                </ul>
             </div>
+
         );
     }
 }

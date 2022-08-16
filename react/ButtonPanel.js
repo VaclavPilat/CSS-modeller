@@ -20,13 +20,13 @@ class ButtonPanel extends React.Component {
                 <button class="btn btn-success me-auto" title="Add New Cube">
                     <i class="bi bi-box"></i>
                 </button>
-                <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerSmaller}>
+                <button class="btn btn-info me-2" title="Change Column Size" onClick={this.setModellerSmaller}>
                     <i class="bi bi-layout-sidebar"></i>
                 </button>
-                <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerEqual}>
+                <button class="btn btn-info me-2" title="Change Column Size" onClick={this.setModellerEqual}>
                     <i class="bi bi-layout-split"></i>
                 </button>
-                <button class="btn btn-info" title="Change Page Layout" onClick={this.setModellerBigger}>
+                <button class="btn btn-info" title="Change Column Size" onClick={this.setModellerBigger}>
                     <i class="bi bi-layout-sidebar-reverse"></i>
                 </button>
             </div>
