@@ -38,6 +38,7 @@ class Settings extends React.Component {
         this.editor.session.setMode("ace/mode/html");
         this.editorBeautify = ace.require("ace/ext/beautify");
         this.updateEditorContent();
+        this.editor.session.on('change', this.codeChanged);
     }
     // Changing editor content after this component is updated
     componentDidUpdate() {
@@ -48,5 +49,12 @@ class Settings extends React.Component {
         this.editor.setValue(this.props.HTML);
         this.editorBeautify.beautify(this.editor.session);
         this.editor.resize();
+    }
+    // HTML code changed
+    codeChanged = () => {
+        if (this.editor.curOp && this.editor.curOp.command.name){
+            var HTML = this.editor.getValue();
+            this.props.saveNewCode(HTML);
+        }
     }
 }
