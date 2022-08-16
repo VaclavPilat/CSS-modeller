@@ -12,10 +12,10 @@ class Settings extends React.Component {
                         <button class="nav-link text-white border-secondary active" data-bs-toggle="tab" data-bs-target={"#" + IDs[0]}>Element Properties</button>
                     </li>
                     <li class="nav-item">
-                        <button class="nav-link text-white border-secondary" data-bs-toggle="tab" data-bs-target={"#" + IDs[1]}>HTML Editor</button>
+                        <button class="nav-link text-white border-secondary" data-bs-toggle="tab" data-bs-target={"#editor"}>HTML Editor</button>
                     </li>
                 </ul>
-                <div class="tab-content border-top border-start border-secondary flex-grow-1 p-0 overflow-auto bg-secondary bg-opacity-25">
+                <div class="tab-content border-top border-start border-secondary flex-grow-1 p-0 overflow-auto bg-secondary bg-opacity-25 position-relative">
                     <div class="tab-pane fade show active p-3" id={IDs[0]}>
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                         <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
@@ -25,11 +25,21 @@ class Settings extends React.Component {
                         <CustomProperty name={"border"} value={"3px solid black"} />
                         <NewPropertyButtons />
                     </div>
-                    <div class="tab-pane fade" id={IDs[1]}>
-                        {this.props.HTML}
-                    </div>
+                    <div class="tab-pane fade m-0 p-0 position-absolute start-0 top-0 end-0 bottom-0" id="editor"></div>
                 </div>
             </div>
         );
+    }
+    // Adding ACE editor after the component is loaded
+    componentDidMount() {
+        ace.config.set('basePath', "https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.5/");
+        this.editor = ace.edit("editor");
+        this.editor.setTheme("ace/theme/monokai");
+        this.editor.session.setMode("ace/mode/html");
+        this.editor.setValue(this.props.HTML);
+    }
+    // Changing editor content after this component is updated
+    componentDidUpdate() {
+        this.editor.setValue(this.props.HTML);
     }
 }
