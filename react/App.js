@@ -28,9 +28,12 @@ class App extends React.Component {
     // Rendering component
     render(){
         return (
-            <div class="m-0 p-0 w-100 h-100 row text-white">
-                <Modeller col={this.state.modellerCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} setAppState={this.setState} addNewSquare={this.addNewSquare} />
-                <Settings col={this.state.settingsCol} HTML={this.state.HTML} changePageLayout={this.changePageLayout} />
+            <div class="m-0 p-0 w-100 h-100 text-white d-flex flex-column">
+                <div class="m-0 p-0 w-100 row flex-grow-1">
+                    <Modeller col={this.state.modellerCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} />
+                    <Settings col={this.state.settingsCol} HTML={this.state.HTML} />
+                </div>
+                <ButtonPanel addNewSquare={this.addNewSquare} changePageLayout={this.changePageLayout} />
             </div>
         );
     }

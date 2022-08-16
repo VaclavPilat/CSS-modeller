@@ -1,23 +1,12 @@
 // Settings part of application
 class Settings extends React.Component {
-    // Changing page layout
-    setModellerBigger = () => {
-        this.props.changePageLayout(8, 4);
-    }
-    setModellerEqual = () => {
-        this.props.changePageLayout(6, 6);
-    }
-    setModellerSmaller = () => {
-        this.props.changePageLayout(4, 8);
-    }
     // Rendering component
     render(){
         var IDs = [];
         for(var i = 0; i < 3; i++)
             IDs.push(createUniqueID())
         return (
-            <div class={"m-0 p-0 col-" + this.props.col + " d-flex"}>
-                <div class="m-0 p-0 d-flex flex-column flex-grow-1 h-100">
+            <div class={"m-0 p-0 col-" + this.props.col + " d-flex flex-column"}>
                     <ul class="nav nav-tabs border-0 flex-shrink-1">
                         <li class="nav-item">
                             <button class="nav-link text-white border-secondary active" data-bs-toggle="tab" data-bs-target={"#" + IDs[0]}>Element Properties</button>
@@ -38,18 +27,6 @@ class Settings extends React.Component {
                         </div>
                         <div class="tab-pane fade m-0 p-0 position-absolute start-0 top-0 end-0 bottom-0" id="editor"></div>
                     </div>
-                </div>
-                <div class="m-0 p-2 flex-shrink-1 d-flex flex-column bg-secondary border-start border-secondary bg-opacity-25">
-                    <button class="btn btn-info mb-2" title="Change Page Layout" onClick={this.setModellerSmaller}>
-                        <i class="bi bi-layout-sidebar"></i>
-                    </button>
-                    <button class="btn btn-info mb-2" title="Change Page Layout" onClick={this.setModellerEqual}>
-                        <i class="bi bi-layout-split"></i>
-                    </button>
-                    <button class="btn btn-info mb-2" title="Change Page Layout" onClick={this.setModellerBigger}>
-                        <i class="bi bi-layout-sidebar-reverse"></i>
-                    </button>
-                </div>
             </div>
         );
     }
