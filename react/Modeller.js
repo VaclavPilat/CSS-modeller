@@ -4,11 +4,11 @@ class Modeller extends React.Component {
     render(){
         return (
             <div class="m-0 p-0 col-8 d-flex">
-                <div class="m-0 p-2 flex-shrink-1 d-flex flex-column bg-secondary" style={{"--bs-bg-opacity": .2}}>
-                    <button class="btn btn-success mb-2">
+                <div class="m-0 p-2 flex-shrink-1 d-flex flex-column bg-secondary border-end border-secondary bg-opacity-25">
+                    <button class="btn btn-success mb-2" title="Add New Plane">
                         <i class="bi bi-square"></i>
                     </button>
-                    <button class="btn btn-success">
+                    <button class="btn btn-success" title="Add New Cube">
                         <i class="bi bi-box"></i>
                     </button>
                 </div>
