@@ -2,6 +2,7 @@
     background-color: var(--bs-secondary) !important;
 }
 
-#modeller > .scene {
+#modeller > * {
     margin: auto;
+    outline: 3px dotted gray;
 }

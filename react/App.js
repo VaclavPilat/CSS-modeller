@@ -4,17 +4,13 @@ class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            HTML: `
-                <div class="scene">
-                    <div style="width: 200px; height: 100px; background-color: salmon;"></div>
-                </div>
-            `,
+            HTML: `<div style="width:400px;height:400px;"></div>`,
             ModellerRef: React.createRef()
         }
     }
     // Adding new square
     addNewSquare = () => {
-        var HTML = `<div style="width: 100px; height: 100px; background-color: white;"></div>`;
+        var HTML = `<div style="width:100px;height:100px;background-color:white;transform-style:preserve-3d;"></div>`;
         this.state.ModellerRef.current.children[0].insertAdjacentHTML('beforeend', HTML);
         this.setState({
             HTML: this.state.ModellerRef.current.innerHTML
