@@ -3,15 +3,23 @@ class App extends React.Component {
     // Constructor
     constructor(){
         super();
+        var defaultHTML = `<div style="width: 400px; height: 400px;"></div>`;
         this.state = {
-            HTML: `<div style="width: 400px; height: 400px;"></div>`,
+            defaultHTML: defaultHTML,
+            HTML: defaultHTML,
             ModellerRef: React.createRef(),
             modellerCol: 8,
             settingsCol: 4
         }
     }
+    // Resetting HTML to default if it is broken
+    resetToDefaultIfNeeded = () => {
+        if(this.state.ModellerRef.current.children.length != 1)
+            this.state.ModellerRef.current.innerHTML = this.state.defaultHTML;
+    }
     // Adding new square
     addNewSquare = () => {
+        this.resetToDefaultIfNeeded();
         var HTML = `<div style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`;
         this.state.ModellerRef.current.children[0].insertAdjacentHTML('beforeend', HTML);
         this.setState({
