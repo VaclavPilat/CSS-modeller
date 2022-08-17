@@ -19,6 +19,6 @@
     transform: rotate(-90deg);
 }
 
-#hierarchy > div > ul > li > .input-group {
+#hierarchy > div > ul > li > .input-group:first-of-type {
     margin-top: 0 !important;
 }

@@ -23,6 +23,9 @@ class TreeviewItem extends React.Component {
                     )}
                     <div class="input-group-text flex-grow-1 bg-secondary bg-opacity-75 text-white border-secondary border-opacity-75 text-uppercase">{this.props.element.getAttribute("class").replace("model-", "")}</div>
                     <button class="btn btn-warning"><i class="bi bi-tools"></i></button>
+                    {!this.props.root && (
+                        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                    )}
                 </div>
                 {this.props.element.children.length > 0 && (
                     <Treeview ID={ID}>

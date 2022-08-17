@@ -1,11 +1,11 @@
 // Settings part of application
 class Settings extends React.Component {
     // Getting hierarchy items
-    getHierarchyItems = (element) => {
+    getHierarchyItems = (element, root) => {
         var elements = [];
         if(element != null && element.children != null)
             for(var i = 0; i < element.children.length; i++)
-                elements.push(<TreeviewItem element={element.children[i]}>{this.getHierarchyItems(element.children[i])}</TreeviewItem>);
+                elements.push(<TreeviewItem element={element.children[i]} root={root}>{this.getHierarchyItems(element.children[i], false)}</TreeviewItem>);
         return elements;
     }
     // Rendering component
@@ -14,7 +14,7 @@ class Settings extends React.Component {
             <div class={"m-0 p-0 overflow-auto position-relative bg-secondary bg-opacity-25 border-start border-secondary " + this.props.col}>
                 <Accordion>
                     <AccordionItem name="Hierarchy" ID="hierarchy">
-                        <Treeview>{this.getHierarchyItems(this.props.ModellerRef.current)}</Treeview>
+                        <Treeview>{this.getHierarchyItems(this.props.ModellerRef.current, true)}</Treeview>
                     </AccordionItem>
                     <AccordionItem name="Properties" ID="properties">
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
