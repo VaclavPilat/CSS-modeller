@@ -10,13 +10,17 @@ class App extends React.Component {
             settingsCol: "col-4"
         }
     }
+    // Updating HTML state
+    syncHTML = () => {
+        this.setState({
+            HTML: this.state.ModellerRef.current.innerHTML
+        });
+    }
     // Adding new plane
     addNewPlane = () => {
         var HTML = `<div class="model-plane" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`;
         this.state.ModellerRef.current.children[0].insertAdjacentHTML('beforeend', HTML);
-        this.setState({
-            HTML: this.state.ModellerRef.current.innerHTML
-        });
+        this.syncHTML();
     }
     // Change page layout
     changePageLayout = (modellerCol, settingsCol) => {
@@ -32,7 +36,7 @@ class App extends React.Component {
                 <ButtonPanel addNewPlane={this.addNewPlane} changePageLayout={this.changePageLayout} />
                 <div class="m-0 p-0 w-100 row flex-grow-1">
                     <Modeller col={this.state.modellerCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} />
-                    <Settings col={this.state.settingsCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} />
+                    <Settings col={this.state.settingsCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} syncHTML={this.syncHTML} />
                 </div>
             </div>
         );

@@ -22,6 +22,7 @@ class Settings extends React.Component {
     removeElement = (indexes) => {
         var element = this.getNestedElement(this.props.ModellerRef.current, indexes);
         element.remove();
+        this.props.syncHTML();
     }
     // Rendering component
     render(){
