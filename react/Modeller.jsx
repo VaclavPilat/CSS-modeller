@@ -7,4 +7,8 @@ class Modeller extends React.Component {
             </div>
         );
     }
+    // Showing elements
+    componentDidMount(){
+        document.getElementById("modeller").appendChild(this.props.DOM);
+    }
 }
