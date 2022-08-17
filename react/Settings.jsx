@@ -14,17 +14,8 @@ class Settings extends React.Component {
             })}</TreeviewItem>
         ];
     }
-    // Getting nested element
-    getNestedElement = (element, indexes) => {
-        if(indexes.length > 0){
-            var index = indexes.shift();
-            return this.getNestedElement(element.children[index], indexes);
-        }else
-            return element;
-    }
     // Removing element from DOM
-    removeElement = (indexes) => {
-        var element = this.getNestedElement(this.props.DOM, indexes);
+    removeElement = (element) => {
         element.remove();
         this.props.updateApplication();
     }

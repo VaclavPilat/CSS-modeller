@@ -20,9 +20,7 @@ class App extends React.Component {
     // Adding new shape
     addNewShape = (HTML) => {
         this.state.DOM.insertAdjacentHTML('beforeend', HTML);
-        this.setState({
-            currentElement: this.state.DOM.children[this.state.DOM.children.length - 1]
-        });
+        this.setCurrentElement(this.state.DOM.children[this.state.DOM.children.length - 1]);
         this.updateApplication();
     }
     // Adding new square

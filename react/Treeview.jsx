@@ -14,7 +14,7 @@ class Treeview extends React.Component {
 class TreeviewItem extends React.Component {
     // Removing element
     removeElement = () => {
-        this.props.removeElement(this.props.indexes);
+        this.props.removeElement(this.props.element);
     }
     // Setting this element as a current one
     setCurrentElement = () => {
