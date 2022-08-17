@@ -13,6 +13,9 @@ class ButtonPanel extends React.Component {
     setModellerSmaller = () => {
         this.props.changePageLayout("col-4", "col-8");
     }
+    setModellerHide = () => {
+        this.props.changePageLayout("d-none", "col-12");
+    }
     // Rendering component
     render(){
         return (
@@ -22,6 +25,9 @@ class ButtonPanel extends React.Component {
                 </button>
                 <button class="btn btn-success me-auto" title="Add New Cube">
                     <i class="bi bi-box"></i>
+                </button>
+                <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerHide}>
+                    <i class="bi bi-square"></i>
                 </button>
                 <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerSmaller}>
                     <i class="bi bi-layout-sidebar"></i>
