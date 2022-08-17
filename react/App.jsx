@@ -3,7 +3,7 @@ class App extends React.Component {
     // Constructor
     constructor(){
         super();
-        var HTML = `<div class="model-scene" style="width: 400px; height: 400px;"></div>`;
+        var HTML = `<div data-modeller-title="scene" style="width: 400px; height: 400px;"></div>`;
         var element = document.createElement("div");
         element.innerHTML = HTML;
         this.state = {
@@ -18,25 +18,25 @@ class App extends React.Component {
     }
     // Adding new square
     addNewSquare = () => {
-        var HTML = `<div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`;
+        var HTML = `<div data-modeller-title="square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`;
         this.state.DOM.insertAdjacentHTML('beforeend', HTML);
         this.updateApplication();
     }
     // Adding new circle
     addNewCircle = () => {
-        var HTML = `<div class="model-circle" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d; border-radius: 50%"></div>`;
+        var HTML = `<div data-modeller-title="circle" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d; border-radius: 50%"></div>`;
         this.state.DOM.insertAdjacentHTML('beforeend', HTML);
         this.updateApplication();
     }
     // Adding new cube
     addNewCube = () => {
-        var HTML = `<div class="model-cube">
-            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
-            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
-            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
-            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
-            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
-            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+        var HTML = `<div data-modeller-title="cube">
+            <div data-modeller-title="cube - front" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div data-modeller-title="cube - back" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div data-modeller-title="cube - left" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div data-modeller-title="cube - right" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div data-modeller-title="cube - top" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div data-modeller-title="cube - bottom" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
         </div>`;
         this.state.DOM.insertAdjacentHTML('beforeend', HTML);
         this.updateApplication();
