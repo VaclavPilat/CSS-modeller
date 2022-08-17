@@ -1,16 +1,16 @@
 // Settings part of application
 class Settings extends React.Component {
     // Getting hierarchy items
-    getHierarchyItems = (element, indexes = []) => {
+    getHierarchyItems = (element, root = true) => {
         return [
             <TreeviewItem 
                 element={element} 
-                indexes={indexes} 
+                root={root} 
                 removeElement={this.removeElement} 
                 current={this.props.currentElement == element} 
                 setCurrentElement={this.props.setCurrentElement}
             >{Array.prototype.slice.call(element.children).map((child, index) => {
-                return this.getHierarchyItems(child, indexes.concat(index));
+                return this.getHierarchyItems(child, false);
             })}</TreeviewItem>
         ];
     }
