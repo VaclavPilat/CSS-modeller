@@ -3,7 +3,7 @@ class App extends React.Component {
     // Constructor
     constructor(){
         super();
-        var HTML = `<div data-modeller-title="scene" style="width: 400px; height: 400px;"></div>`;
+        var HTML = `<div data-modeller-title="scene" data-modeller-current="true" style="width: 400px; height: 400px;"></div>`;
         var element = document.createElement("div");
         element.innerHTML = HTML;
         this.state = {
@@ -54,6 +54,9 @@ class App extends React.Component {
     }
     // Setting an element as a current one
     setCurrentElement = (element) => {
+        if(this.elementExists(this.state.DOM, this.state.currentElement))
+            this.state.currentElement.removeAttribute("data-modeller-current");
+        element.setAttribute("data-modeller-current", "true");
         this.setState({
             currentElement: element
         });

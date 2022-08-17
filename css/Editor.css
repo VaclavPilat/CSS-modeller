@@ -4,7 +4,10 @@
 
 #modeller > * {
     margin: auto;
-    outline: 3px dotted gray;
+}
+
+[data-modeller-current="true"] {
+    outline: 3px dotted white;
 }
 
 .accordion-button::after {
