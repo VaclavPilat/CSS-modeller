@@ -8,6 +8,7 @@ class App extends React.Component {
         element.innerHTML = HTML;
         this.state = {
             DOM: element.children[0],
+            currentElement: element.children[0],
             modellerCol: "col-8",
             settingsCol: "col-4"
         }
@@ -47,6 +48,12 @@ class App extends React.Component {
             settingsCol: settingsCol
         });
     }
+    // Setting an element as a current one
+    setCurrentElement = (element) => {
+        this.setState({
+            currentElement: element
+        });
+    }
     // Rendering component
     render(){
         return (
@@ -54,7 +61,13 @@ class App extends React.Component {
                 <ButtonPanel addNewSquare={this.addNewSquare} addNewCircle={this.addNewCircle} addNewCube={this.addNewCube} changePageLayout={this.changePageLayout} />
                 <div class="m-0 p-0 w-100 row flex-grow-1">
                     <Modeller col={this.state.modellerCol} DOM={this.state.DOM} />
-                    <Settings col={this.state.settingsCol} DOM={this.state.DOM} updateApplication={this.updateApplication} />
+                    <Settings 
+                        col={this.state.settingsCol} 
+                        DOM={this.state.DOM} 
+                        updateApplication={this.updateApplication} 
+                        currentElement={this.state.currentElement} 
+                        setCurrentElement={this.setCurrentElement}
+                    />
                 </div>
             </div>
         );

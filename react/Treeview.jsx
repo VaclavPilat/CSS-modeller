@@ -16,6 +16,10 @@ class TreeviewItem extends React.Component {
     removeElement = () => {
         this.props.removeElement(this.props.indexes);
     }
+    // Setting this element as a current one
+    setCurrentElement = () => {
+        this.props.setCurrentElement(this.props.element);
+    }
     // Rendering component
     render(){
         var ID = createUniqueID();
@@ -25,7 +29,7 @@ class TreeviewItem extends React.Component {
                     {this.props.element.children.length > 0 && (
                         <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
                     )}
-                    <div class="input-group-text flex-grow-1 bg-secondary bg-opacity-75 text-white border-secondary border-opacity-75 text-uppercase">{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</div>
+                    <div class="input-group-text flex-grow-1 bg-secondary bg-opacity-75 text-white border-secondary border-opacity-75 text-uppercase" onClick={this.setCurrentElement}>{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</div>
                     {this.props.indexes.length > 0 ? (
                         <button class="btn btn-danger" onClick={this.removeElement}><i class="bi bi-trash-fill"></i></button>
                     ) : ( null )}

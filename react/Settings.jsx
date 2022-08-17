@@ -2,11 +2,17 @@
 class Settings extends React.Component {
     // Getting hierarchy items
     getHierarchyItems = (element, indexes = []) => {
-        return [<TreeviewItem element={element} indexes={indexes} removeElement={this.removeElement}>
-            {Array.prototype.slice.call(element.children).map((child, index) => {
+        return [
+            <TreeviewItem 
+                element={element} 
+                indexes={indexes} 
+                removeElement={this.removeElement} 
+                current={this.props.currentElement == element} 
+                setCurrentElement={this.props.setCurrentElement}
+            >{Array.prototype.slice.call(element.children).map((child, index) => {
                 return this.getHierarchyItems(child, indexes.concat(index));
-            })}
-        </TreeviewItem>];
+            })}</TreeviewItem>
+        ];
     }
     // Getting nested element
     getNestedElement = (element, indexes) => {
@@ -30,7 +36,7 @@ class Settings extends React.Component {
                     <AccordionItem name="Hierarchy" ID="hierarchy">
                         <Treeview>{this.getHierarchyItems(this.props.DOM)}</Treeview>
                     </AccordionItem>
-                    <AccordionItem name="Properties" ID="properties">
+                    <AccordionItem name={"Properties" + (this.props.currentElement != null ? " - " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                         <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
                         <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
