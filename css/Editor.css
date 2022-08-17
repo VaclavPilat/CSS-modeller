@@ -7,7 +7,7 @@
 }
 
 [data-modeller-current="true"] {
-    outline: 3px dotted white;
+    outline: 3px dashed var(--bs-danger);
 }
 
 .accordion-button::after {

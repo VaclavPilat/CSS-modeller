@@ -3,15 +3,24 @@ class App extends React.Component {
     // Constructor
     constructor(){
         super();
-        var HTML = `<div data-modeller-title="scene" data-modeller-current="true" style="width: 400px; height: 400px;"></div>`;
+        var HTML = `<div data-modeller-title="scene" style="width: 400px; height: 400px;"></div>`;
         var element = document.createElement("div");
         element.innerHTML = HTML;
+        var DOM = element.children[0];
+        this.removeAttributes(DOM, "data-modeller-current");
+        DOM.setAttribute("data-modeller-current", "true");
         this.state = {
-            DOM: element.children[0],
-            currentElement: element.children[0],
+            DOM: DOM,
+            currentElement: DOM,
             modellerCol: "col-8",
             settingsCol: "col-4"
         }
+    }
+    // Removing attribute from elements in DOM
+    removeAttributes = (DOM, attribute) => {
+        DOM.removeAttribute(attribute);
+        for(var i = 0; i < DOM.children.length; i++)
+            this.removeAttributes(DOM.children[i], attribute);
     }
     // Updating application
     updateApplication = () => {
