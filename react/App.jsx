@@ -28,6 +28,19 @@ class App extends React.Component {
         this.state.DOM.insertAdjacentHTML('beforeend', HTML);
         this.updateApplication();
     }
+    // Adding new cube
+    addNewCube = () => {
+        var HTML = `<div class="model-cube">
+            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+            <div class="model-square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
+        </div>`;
+        this.state.DOM.insertAdjacentHTML('beforeend', HTML);
+        this.updateApplication();
+    }
     // Change page layout
     changePageLayout = (modellerCol, settingsCol) => {
         this.setState({
@@ -39,7 +52,7 @@ class App extends React.Component {
     render(){
         return (
             <div class="m-0 p-0 w-100 h-100 text-white d-flex flex-column">
-                <ButtonPanel addNewSquare={this.addNewSquare} addNewCircle={this.addNewCircle} changePageLayout={this.changePageLayout} />
+                <ButtonPanel addNewSquare={this.addNewSquare} addNewCircle={this.addNewCircle} addNewCube={this.addNewCube} changePageLayout={this.changePageLayout} />
                 <div class="m-0 p-0 w-100 row flex-grow-1">
                     <Modeller col={this.state.modellerCol} DOM={this.state.DOM} />
                     <Settings col={this.state.settingsCol} DOM={this.state.DOM} updateApplication={this.updateApplication} />

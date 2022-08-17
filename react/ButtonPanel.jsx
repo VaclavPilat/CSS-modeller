@@ -26,7 +26,7 @@ class ButtonPanel extends React.Component {
                 <button class="btn btn-success me-2" title="Add New Circle" onClick={this.props.addNewCircle}>
                     <i class="bi bi-circle-fill"></i>
                 </button>
-                <button class="btn btn-success me-auto" title="Add New Cube">
+                <button class="btn btn-success me-auto" title="Add New Cube" onClick={this.props.addNewCube}>
                     <i class="bi bi-box-fill"></i>
                 </button>
                 <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerHide}>
