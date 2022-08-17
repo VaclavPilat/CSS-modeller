@@ -20,11 +20,14 @@ class ButtonPanel extends React.Component {
     render(){
         return (
             <div class="m-0 p-2 w-100 flex-shrink-1 d-flex bg-secondary border-bottom border-secondary bg-opacity-25">
-                <button class="btn btn-success me-2" title="Add New Plane" onClick={this.props.addNewPlane}>
-                    <i class="bi bi-square"></i>
+                <button class="btn btn-success me-2" title="Add New Square" onClick={this.props.addNewSquare}>
+                    <i class="bi bi-square-fill"></i>
+                </button>
+                <button class="btn btn-success me-2" title="Add New Circle" onClick={this.props.addNewCircle}>
+                    <i class="bi bi-circle-fill"></i>
                 </button>
                 <button class="btn btn-success me-auto" title="Add New Cube">
-                    <i class="bi bi-box"></i>
+                    <i class="bi bi-box-fill"></i>
                 </button>
                 <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerHide}>
                     <i class="bi bi-square"></i>
