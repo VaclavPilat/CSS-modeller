@@ -16,30 +16,29 @@ class App extends React.Component {
     updateApplication = () => {
         this.forceUpdate();
     }
-    // Adding new square
-    addNewSquare = () => {
-        var HTML = `<div data-modeller-title="square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`;
+    // Adding new shape
+    addNewShape = (HTML) => {
         this.state.DOM.insertAdjacentHTML('beforeend', HTML);
         this.updateApplication();
+    }
+    // Adding new square
+    addNewSquare = () => {
+        this.addNewShape(`<div data-modeller-title="square" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>`);
     }
     // Adding new circle
     addNewCircle = () => {
-        var HTML = `<div data-modeller-title="circle" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d; border-radius: 50%"></div>`;
-        this.state.DOM.insertAdjacentHTML('beforeend', HTML);
-        this.updateApplication();
+        this.addNewShape(`<div data-modeller-title="circle" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d; border-radius: 50%"></div>`);
     }
     // Adding new cube
     addNewCube = () => {
-        var HTML = `<div data-modeller-title="cube">
+        this.addNewShape(`<div data-modeller-title="cube">
             <div data-modeller-title="cube - front" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
             <div data-modeller-title="cube - back" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
             <div data-modeller-title="cube - left" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
             <div data-modeller-title="cube - right" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
             <div data-modeller-title="cube - top" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
             <div data-modeller-title="cube - bottom" style="width: 100px; height: 100px; background-color: white; transform-style: preserve-3d;"></div>
-        </div>`;
-        this.state.DOM.insertAdjacentHTML('beforeend', HTML);
-        this.updateApplication();
+        </div>`);
     }
     // Change page layout
     changePageLayout = (modellerCol, settingsCol) => {
