@@ -22,7 +22,7 @@ class Settings extends React.Component {
                     <AccordionItem name="Hierarchy" ID="hierarchy">
                         <Treeview>{this.getHierarchyItems(this.props.DOM)}</Treeview>
                     </AccordionItem>
-                    <AccordionItem name={"Properties" + (this.props.currentElement != null ? " - " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
+                    <AccordionItem name={"Properties" + (this.props.currentElement != null ? " of " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                         <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
                         <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
@@ -34,9 +34,5 @@ class Settings extends React.Component {
                 </Accordion>
             </div>
         );
-    }
-    // Forcing the component to update itself after load to show Treeview components
-    componentDidMount(){
-        this.forceUpdate();
     }
 }

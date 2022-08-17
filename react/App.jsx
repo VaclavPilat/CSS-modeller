@@ -70,7 +70,6 @@ class App extends React.Component {
                     <Settings 
                         col={this.state.settingsCol} 
                         DOM={this.state.DOM} 
-                        updateApplication={this.updateApplication} 
                         currentElement={this.state.currentElement} 
                         setCurrentElement={this.setCurrentElement}
                         removeElement={this.removeElement}
