@@ -32,7 +32,7 @@ class App extends React.Component {
                 <ButtonPanel addNewPlane={this.addNewPlane} changePageLayout={this.changePageLayout} />
                 <div class="m-0 p-0 w-100 row flex-grow-1">
                     <Modeller col={this.state.modellerCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} />
-                    <Settings col={this.state.settingsCol} HTML={this.state.HTML} />
+                    <Settings col={this.state.settingsCol} HTML={this.state.HTML} ModellerRef={this.state.ModellerRef} />
                 </div>
             </div>
         );

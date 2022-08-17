@@ -1,12 +1,20 @@
 // Settings part of application
 class Settings extends React.Component {
+    // Rendering treeview
+    renderChildren = (element) => {
+        var output = "";
+        if(element != null)
+            for(var i = 0; i < element.children.length; i++)
+                output += element.children[i].getAttribute("class") + " \n " + this.renderChildren(element.children[i]);
+        return output;
+    }
     // Rendering component
     render(){
         return (
             <div class={"m-0 p-0 overflow-auto position-relative bg-secondary bg-opacity-25 border-start border-secondary " + this.props.col}>
                 <Accordion>
                     <AccordionItem name="Hierarchy" ID="hierarchy">
-                        {this.props.HTML}
+                        {this.renderChildren(this.props.ModellerRef.current)}
                     </AccordionItem>
                     <AccordionItem name="Properties" ID="properties">
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
@@ -20,5 +28,9 @@ class Settings extends React.Component {
                 </Accordion>
             </div>
         );
+    }
+    // Forcing the component to update itself after load to show Treeview components
+    componentDidMount(){
+        this.forceUpdate();
     }
 }
