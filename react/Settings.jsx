@@ -2,11 +2,11 @@
 class Settings extends React.Component {
     // Getting hierarchy items
     getHierarchyItems = (element) => {
-        var c = [];
+        var elements = [];
         if(element != null && element.children != null)
             for(var i = 0; i < element.children.length; i++)
-                c.push(<TreeviewItem element={element.children[i]}>{this.getHierarchyItems(element.children[i])}</TreeviewItem>);
-        return c;
+                elements.push(<TreeviewItem element={element.children[i]}>{this.getHierarchyItems(element.children[i])}</TreeviewItem>);
+        return elements;
     }
     // Rendering component
     render(){

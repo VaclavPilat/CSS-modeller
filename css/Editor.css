@@ -10,3 +10,15 @@
 .accordion-button::after {
     filter: brightness(0%) invert(100%);
 }
+
+#hierarchy button[data-bs-toggle="collapse"] > .bi::before {
+    transition: .2s all;
+}
+
+#hierarchy button[data-bs-toggle="collapse"].collapsed > .bi::before {
+    transform: rotate(-90deg);
+}
+
+#hierarchy > div > ul > li > .input-group {
+    margin-top: 0 !important;
+}
