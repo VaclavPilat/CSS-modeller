@@ -35,9 +35,7 @@ class CustomProperty extends React.Component {
             <div class="input-group mb-3">
                 <input type="text" class="form-control bg-dark text-white border-secondary" defaultValue={this.props.name} />
                 <input type="text" class="form-control bg-dark text-white border-secondary" defaultValue={this.props.value} />
-                <button class="btn btn-danger">
-                    <i class="bi bi-x-lg"></i>
-                </button>
+                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
             </div>
         );
     }
