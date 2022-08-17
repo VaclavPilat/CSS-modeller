@@ -1,12 +1,27 @@
 // Settings part of application
 class Settings extends React.Component {
     // Getting hierarchy items
-    getHierarchyItems = (element, root) => {
+    getHierarchyItems = (element, indexes = []) => {
         var elements = [];
         if(element != null && element.children != null)
-            for(var i = 0; i < element.children.length; i++)
-                elements.push(<TreeviewItem element={element.children[i]} root={root}>{this.getHierarchyItems(element.children[i], false)}</TreeviewItem>);
+            for(var i = 0; i < element.children.length; i++){
+                var newIndexes = indexes.concat(i);
+                elements.push(<TreeviewItem element={element.children[i]} indexes={newIndexes}>{this.getHierarchyItems(element.children[i], newIndexes)}</TreeviewItem>);
+            }
         return elements;
+    }
+    // Getting nested element
+    getNestedElement = (element, indexes) => {
+        if(indexes.length > 0){
+            var index = indexes.shift();
+            return this.getNestedElement(element.children[index], indexes);
+        }else
+            return element;
+    }
+    // Removing element from DOM
+    removeElement = (indexes) => {
+        var element = this.getNestedElement(this.props.ModellerRef.current, indexes);
+        element.remove();
     }
     // Rendering component
     render(){
@@ -14,7 +29,7 @@ class Settings extends React.Component {
             <div class={"m-0 p-0 overflow-auto position-relative bg-secondary bg-opacity-25 border-start border-secondary " + this.props.col}>
                 <Accordion>
                     <AccordionItem name="Hierarchy" ID="hierarchy">
-                        <Treeview>{this.getHierarchyItems(this.props.ModellerRef.current, true)}</Treeview>
+                        <Treeview removeElement={this.removeElement}>{this.getHierarchyItems(this.props.ModellerRef.current)}</Treeview>
                     </AccordionItem>
                     <AccordionItem name="Properties" ID="properties">
                         <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
