@@ -29,7 +29,7 @@ class TreeviewItem extends React.Component {
                     {this.props.element.children.length > 0 && (
                         <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
                     )}
-                    <div class="input-group-text flex-grow-1 bg-secondary bg-opacity-75 text-white border-secondary border-opacity-75 text-uppercase" onClick={this.setCurrentElement}>{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</div>
+                    <button class={"btn input-group-text flex-grow-1 text-uppercase text-start " + (this.props.current ? "bg-white bg-opacity-50 border-white border-opacity-50 text-black" : "bg-secondary bg-opacity-75 border-secondary border-opacity-75 text-white")} onClick={this.setCurrentElement}>{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</button>
                     {this.props.indexes.length > 0 ? (
                         <button class="btn btn-danger" onClick={this.removeElement}><i class="bi bi-trash-fill"></i></button>
                     ) : ( null )}
