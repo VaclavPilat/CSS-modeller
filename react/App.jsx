@@ -15,7 +15,10 @@ class App extends React.Component {
     }
     // Updating application
     updateApplication = () => {
-        this.forceUpdate();
+        if(!this.elementExists(this.state.DOM, this.state.currentElement))
+            this.setCurrentElement(this.state.DOM);
+        else
+            this.forceUpdate();
     }
     // Adding new shape
     addNewShape = (HTML) => {
@@ -59,6 +62,17 @@ class App extends React.Component {
     removeElement = (element) => {
         element.remove();
         this.updateApplication();
+    }
+    // Does DOM contain element?
+    elementExists = (DOM, element) => {
+        if(DOM == element)
+            return true;
+        else
+            if(DOM.children.length > 0)
+                for(var i = 0; i < DOM.children.length; i++)
+                    if(this.elementExists(DOM.children[i], element))
+                        return true;
+        return false;
     }
     // Rendering component
     render(){
