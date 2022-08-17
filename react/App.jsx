@@ -55,6 +55,11 @@ class App extends React.Component {
             currentElement: element
         });
     }
+    // Removing element from DOM
+    removeElement = (element) => {
+        element.remove();
+        this.updateApplication();
+    }
     // Rendering component
     render(){
         return (
@@ -68,6 +73,7 @@ class App extends React.Component {
                         updateApplication={this.updateApplication} 
                         currentElement={this.state.currentElement} 
                         setCurrentElement={this.setCurrentElement}
+                        removeElement={this.removeElement}
                     />
                 </div>
             </div>

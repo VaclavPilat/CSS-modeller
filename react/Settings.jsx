@@ -6,18 +6,13 @@ class Settings extends React.Component {
             <TreeviewItem 
                 element={element} 
                 root={root} 
-                removeElement={this.removeElement} 
+                removeElement={this.props.removeElement} 
                 current={this.props.currentElement == element} 
                 setCurrentElement={this.props.setCurrentElement}
             >{Array.prototype.slice.call(element.children).map((child, index) => {
                 return this.getHierarchyItems(child, false);
             })}</TreeviewItem>
         ];
-    }
-    // Removing element from DOM
-    removeElement = (element) => {
-        element.remove();
-        this.props.updateApplication();
     }
     // Rendering component
     render(){
