@@ -52,12 +52,23 @@ class VectorProperty extends React.Component {
 
 // Class for visualising a list of custom properties
 class CustomProperty extends React.Component {
+    // Property name change
+    onNameChange = (event) => {
+        var old = (' ' + this.props.name).slice(1);
+        this.props.name = event.target.value;
+        this.props.onChangeHandler(old, event.target.value, this.props.value);
+    }
+    // Property name change
+    onValueChange = (event) => {
+        this.props.value = event.target.value;
+        this.props.onChangeHandler(this.props.name, this.props.name, event.target.value);
+    }
     // Rendering component
     render(){
         return(
             <div class="input-group mb-3">
-                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} />
-                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} />
                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
             </div>
         );
