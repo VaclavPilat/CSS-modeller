@@ -35,6 +35,12 @@ class App extends React.Component {
         this.setCurrentElement(this.state.DOM.children[this.state.DOM.children.length - 1]);
         this.updateApplication();
     }
+    // Adding new empty object
+    addEmptyObject = () => {
+        this.addNewShape(
+            `<div data-modeller-title="empty object" style="position: absolute; width: 0px; height: 0px;"></div>`
+        );
+    }
     // Adding new square
     addNewSquare = () => {
         this.addNewShape(
@@ -97,6 +103,7 @@ class App extends React.Component {
         return (
             <div class="m-0 p-0 w-100 h-100 text-white d-flex flex-column">
                 <ButtonPanel 
+                    addEmptyObject={this.addEmptyObject}
                     addNewSquare={this.addNewSquare} 
                     addNewCircle={this.addNewCircle} 
                     addNewCube={this.addNewCube} 
