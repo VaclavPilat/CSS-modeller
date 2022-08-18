@@ -33,7 +33,7 @@ class Properties extends React.Component {
             }
         };
         if(styles.transform){
-            var transformValues = Array.from(transform.matchAll(/(\w+)\((.+?)\)/gm)).reduce((agg, [, fn, val]) => ({...agg, [fn]: val.split(",")}), {});
+            var transformValues = Array.from(styles.transform.matchAll(/(\w+)\((.+?)\)/gm)).reduce((agg, [, fn, val]) => ({...agg, [fn]: val.split(",")}), {});
             if(transformValues.translate3d){
                 transform.translate.x = transformValues.translate3d[0].trim();
                 transform.translate.y = transformValues.translate3d[1].trim();
