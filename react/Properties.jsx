@@ -16,11 +16,28 @@ class Properties extends React.Component {
     // Rendering component
     render(){
         var styles = this.parseStyleProperties(this.props.currentElement.getAttribute("style"));
+        var transform = {
+            translate: {
+                x: "0",
+                y: "0",
+                z: "0"
+            },
+            rotation: {
+                x: "0deg",
+                y: "0deg",
+                z: "0deg"
+            },
+            scale: {
+                x: "1",
+                y: "1",
+                z: "1"
+            }
+        };
         return(
             <Wrapper>
-                <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
-                <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
-                <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
+                <VectorProperty name={"Position"} x={transform.translate.x} y={transform.translate.y} z={transform.translate.z} locked={false} />
+                <VectorProperty name={"Rotation"} x={transform.rotation.x} y={transform.rotation.y} z={transform.rotation.z} locked={false} />
+                <VectorProperty name={"Scale"} x={transform.scale.x} y={transform.scale.y} z={transform.scale.z} locked={true} />
                 <VectorProperty name={"Size"} x={styles.width != null ? styles.width : "0"} y={styles.height != null ? styles.height : "0"} locked={false} />
                 {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
                     <CustomProperty name={property} value={styles[property]} />
