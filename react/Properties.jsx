@@ -26,6 +26,9 @@ class Properties extends React.Component {
                 <CustomProperty name={"background-color"} value={"red"} />
                 <CustomProperty name={"border"} value={"3px solid black"} />
                 <NewPropertyButtons />*/}
+                {Object.keys(styles).map((property, i) => (
+                    <CustomProperty name={property} value={styles[property]} />
+                ))}
             </Wrapper>
         );
     }
@@ -68,8 +71,8 @@ class CustomProperty extends React.Component {
     render(){
         return(
             <div class="input-group mb-3">
-                <input type="text" class="form-control bg-dark text-white border-secondary" defaultValue={this.props.name} />
-                <input type="text" class="form-control bg-dark text-white border-secondary" defaultValue={this.props.value} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} />
                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
             </div>
         );
