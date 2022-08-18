@@ -17,9 +17,9 @@ class Properties extends React.Component {
     getTransformObject = (styles) => {
         var transform = {
             translate: {
-                x: "0",
-                y: "0",
-                z: "0"
+                x: "0px",
+                y: "0px",
+                z: "0px"
             },
             rotate: {
                 x: "0deg",
