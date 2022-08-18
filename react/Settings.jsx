@@ -9,7 +9,7 @@ class Settings extends React.Component {
                 removeElement={this.props.removeElement} 
                 current={this.props.currentElement == element} 
                 setCurrentElement={this.props.setCurrentElement}
-            >{Array.prototype.slice.call(element.children).map((child, index) => {
+            >{Array.prototype.slice.call(element.children).map((child) => {
                 return this.getHierarchyItems(child, false);
             })}</TreeviewItem>
         ];
@@ -23,13 +23,7 @@ class Settings extends React.Component {
                         <Treeview>{this.getHierarchyItems(this.props.DOM)}</Treeview>
                     </AccordionItem>
                     <AccordionItem name={"Properties" + (this.props.currentElement != null ? " of " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
-                        <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
-                        <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
-                        <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
-                        <VectorProperty name={"Size"} x={100} y={100} locked={false} />
-                        <CustomProperty name={"background-color"} value={"red"} />
-                        <CustomProperty name={"border"} value={"3px solid black"} />
-                        <NewPropertyButtons />
+                        <Properties currentElement={this.props.currentElement} />
                     </AccordionItem>
                 </Accordion>
             </div>
