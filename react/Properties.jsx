@@ -1,11 +1,24 @@
 // Class showing properties
 class Properties extends React.Component {
+    // Parsing style properties
+    parseStyleProperties = (string) => {
+        var styles = {};
+        if(string != null)
+            string.split(';').forEach((propertyValue) => {
+                propertyValue = propertyValue.trim();
+                if(propertyValue.length > 0){
+                    var [property, value] = propertyValue.trim().split(':');
+                    styles[property.trim()] = value.trim();
+                }
+            });
+        return styles;
+    }
     // Rendering component
     render(){
-        var styles = this.props.currentElement.getAttribute("style");
+        var styles = this.parseStyleProperties(this.props.currentElement.getAttribute("style"));
         return(
             <Wrapper>
-                {styles}
+                {JSON.stringify(styles)}
                 {/*
                 <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                 <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
