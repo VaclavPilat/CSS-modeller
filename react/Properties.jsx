@@ -26,7 +26,7 @@ class Properties extends React.Component {
                 <CustomProperty name={"background-color"} value={"red"} />
                 <CustomProperty name={"border"} value={"3px solid black"} />
                 <NewPropertyButtons />*/}
-                {Object.keys(styles).map((property, i) => (
+                {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
                     <CustomProperty name={property} value={styles[property]} />
                 ))}
             </Wrapper>
