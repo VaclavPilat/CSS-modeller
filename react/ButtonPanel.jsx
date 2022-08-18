@@ -29,6 +29,9 @@ class ButtonPanel extends React.Component {
                 <button class="btn btn-success me-auto" title="Add New Cube" onClick={this.props.addNewCube}>
                     <i class="bi bi-box-fill"></i>
                 </button>
+                <a class="btn btn-primary me-auto" title="Download Current Model" href={"data:application/octet-stream," + encodeURI(this.props.DOM.outerHTML)} download="CSS_3D_Model.html">
+                    <i class="bi bi-download"></i>
+                </a>
                 <button class="btn btn-info me-2" title="Change Page Layout" onClick={this.setModellerHide}>
                     <i class="bi bi-square"></i>
                 </button>

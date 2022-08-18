@@ -96,9 +96,18 @@ class App extends React.Component {
     render(){
         return (
             <div class="m-0 p-0 w-100 h-100 text-white d-flex flex-column">
-                <ButtonPanel addNewSquare={this.addNewSquare} addNewCircle={this.addNewCircle} addNewCube={this.addNewCube} changePageLayout={this.changePageLayout} />
+                <ButtonPanel 
+                    addNewSquare={this.addNewSquare} 
+                    addNewCircle={this.addNewCircle} 
+                    addNewCube={this.addNewCube} 
+                    changePageLayout={this.changePageLayout}
+                    DOM={this.state.DOM}
+                />
                 <div class="m-0 p-0 w-100 row flex-grow-1">
-                    <Modeller col={this.state.modellerCol} DOM={this.state.DOM} />
+                    <Modeller 
+                        col={this.state.modellerCol} 
+                        DOM={this.state.DOM}
+                    />
                     <Settings 
                         col={this.state.settingsCol} 
                         DOM={this.state.DOM} 
