@@ -34,33 +34,18 @@ class Properties extends React.Component {
         };
         if(styles.transform){
             var transformValues = Array.from(styles.transform.matchAll(/(\w+)\((.+?)\)/gm)).reduce((agg, [, fn, val]) => ({...agg, [fn]: val.split(",")}), {});
-            if(transformValues.translate3d){
-                transform.translate.x = transformValues.translate3d[0].trim();
-                transform.translate.y = transformValues.translate3d[1].trim();
-                transform.translate.z = transformValues.translate3d[2].trim();
-            }
             if(transformValues.translateX)
                 transform.translate.x = transformValues.translateX;
             if(transformValues.translateY)
                 transform.translate.y = transformValues.translateY;
             if(transformValues.translateZ)
                 transform.translate.z = transformValues.translateZ;
-            if(transformValues.rotate3d){
-                transform.rotate.x = transformValues.rotate3d[0].trim();
-                transform.rotate.y = transformValues.rotate3d[1].trim();
-                transform.rotate.z = transformValues.rotate3d[2].trim();
-            }
             if(transformValues.rotateX)
                 transform.rotate.x = transformValues.rotateX;
             if(transformValues.rotateY)
                 transform.rotate.y = transformValues.rotateY;
             if(transformValues.rotateZ)
                 transform.rotate.z = transformValues.rotateZ;
-            if(transformValues.scale3d){
-                transform.scale.x = transformValues.scale3d[0].trim();
-                transform.scale.y = transformValues.scale3d[1].trim();
-                transform.scale.z = transformValues.scale3d[2].trim();
-            }
             if(transformValues.scaleX)
                 transform.scale.x = transformValues.scaleX;
             if(transformValues.scaleY)
