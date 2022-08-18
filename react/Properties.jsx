@@ -2,8 +2,10 @@
 class Properties extends React.Component {
     // Rendering component
     render(){
+        var styles = this.props.currentElement.getAttribute("style");
         return(
             <Wrapper>
+                {styles}
                 {/*
                 <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                 <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
