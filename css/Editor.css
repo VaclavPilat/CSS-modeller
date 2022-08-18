@@ -2,10 +2,6 @@
     background-color: var(--bs-secondary) !important;
 }
 
-#modeller > * {
-    margin: auto;
-}
-
 [data-modeller-current="true"] {
     outline: 3px dashed var(--bs-danger);
 }
