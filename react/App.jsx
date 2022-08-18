@@ -37,22 +37,28 @@ class App extends React.Component {
     }
     // Adding new square
     addNewSquare = () => {
-        this.addNewShape(`<div data-modeller-title="square" style="position: absolute; transform: translateX(100px); width: 100px; height: 100px; background-color: white;"></div>`);
+        this.addNewShape(
+            `<div data-modeller-title="square" style="position: absolute; transform: translateX(100px); width: 100px; height: 100px; background-color: lightblue;"></div>`
+        );
     }
     // Adding new circle
     addNewCircle = () => {
-        this.addNewShape(`<div data-modeller-title="circle" style="position: absolute; width: 100px; height: 100px; background-color: white; border-radius: 50%"></div>`);
+        this.addNewShape(
+            `<div data-modeller-title="circle" style="position: absolute; width: 100px; height: 100px; background-color: lightgreen; border-radius: 50%"></div>`
+        );
     }
     // Adding new cube
     addNewCube = () => {
-        this.addNewShape(`<div data-modeller-title="cube" style="position: absolute; transform-style: preserve-3d; transform: rotateX(35.25deg) rotateY(45deg) rotateZ(0deg); width: 100px; height: 100px;">
-            <div data-modeller-title="cube - front" style="width: 100px; height: 100px; position: absolute; background-color: white; transform: rotateY(0deg) translateZ(50px);"></div>
-            <div data-modeller-title="cube - back" style="width: 100px; height: 100px; position: absolute; background-color: white; transform: rotateY(180deg) translateZ(50px);"></div>
-            <div data-modeller-title="cube - left" style="width: 100px; height: 100px; position: absolute; background-color: white; transform: rotateY(-90deg) translateZ(50px);"></div>
-            <div data-modeller-title="cube - right" style="width: 100px; height: 100px; position: absolute; background-color: white; transform: rotateY(90deg) translateZ(50px);"></div>
-            <div data-modeller-title="cube - top" style="width: 100px; height: 100px; position: absolute; background-color: white; transform: rotateX(90deg) translateZ(50px);"></div>
-            <div data-modeller-title="cube - bottom" style="width: 100px; height: 100px; position: absolute; background-color: white; transform: rotateX(-90deg) translateZ(50px);"></div>
-        </div>`);
+        this.addNewShape(
+            `<div data-modeller-title="cube" style="position: absolute; transform-style: preserve-3d; transform: rotateX(35.25deg) rotateY(45deg) rotateZ(0deg); width: 100px; height: 100px;">
+                <div data-modeller-title="cube - front" style="width: 100px; height: 100px; position: absolute; background-color: lightsalmon; transform: rotateY(0deg) translateZ(50px);"></div>
+                <div data-modeller-title="cube - back" style="width: 100px; height: 100px; position: absolute; background-color: lightsalmon; transform: rotateY(180deg) translateZ(50px);"></div>
+                <div data-modeller-title="cube - left" style="width: 100px; height: 100px; position: absolute; background-color: lightsalmon; transform: rotateY(-90deg) translateZ(50px);"></div>
+                <div data-modeller-title="cube - right" style="width: 100px; height: 100px; position: absolute; background-color: lightsalmon; transform: rotateY(90deg) translateZ(50px);"></div>
+                <div data-modeller-title="cube - top" style="width: 100px; height: 100px; position: absolute; background-color: lightsalmon; transform: rotateX(90deg) translateZ(50px);"></div>
+                <div data-modeller-title="cube - bottom" style="width: 100px; height: 100px; position: absolute; background-color: lightsalmon; transform: rotateX(-90deg) translateZ(50px);"></div>
+            </div>`
+        );
     }
     // Change page layout
     changePageLayout = (modellerCol, settingsCol) => {
