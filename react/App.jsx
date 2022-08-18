@@ -38,7 +38,7 @@ class App extends React.Component {
     // Adding new square
     addNewSquare = () => {
         this.addNewShape(
-            `<div data-modeller-title="square" style="position: absolute; transform: translateX(100px); width: 100px; height: 100px; background-color: lightblue;"></div>`
+            `<div data-modeller-title="square" style="position: absolute; width: 100px; height: 100px; background-color: lightblue;"></div>`
         );
     }
     // Adding new circle
