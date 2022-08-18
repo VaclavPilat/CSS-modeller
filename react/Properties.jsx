@@ -18,17 +18,14 @@ class Properties extends React.Component {
         var styles = this.parseStyleProperties(this.props.currentElement.getAttribute("style"));
         return(
             <Wrapper>
-                <VectorProperty name={"Size"} x={styles.width != null ? styles.width : "0"} y={styles.height != null ? styles.height : "0"} locked={false} />
-                {/*
                 <VectorProperty name={"Position"} x={0} y={0} z={0} locked={false} />
                 <VectorProperty name={"Rotation"} x={0} y={0} z={0} locked={false} />
                 <VectorProperty name={"Scale"} x={1} y={1} z={1} locked={true} />
-                <CustomProperty name={"background-color"} value={"red"} />
-                <CustomProperty name={"border"} value={"3px solid black"} />
-                <NewPropertyButtons />*/}
+                <VectorProperty name={"Size"} x={styles.width != null ? styles.width : "0"} y={styles.height != null ? styles.height : "0"} locked={false} />
                 {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
                     <CustomProperty name={property} value={styles[property]} />
                 ))}
+                <NewPropertyButtons />
             </Wrapper>
         );
     }
