@@ -16,6 +16,10 @@ class ButtonPanel extends React.Component {
     setModellerHide = () => {
         this.props.changePageLayout("d-none", "col-12");
     }
+    // Opening dialog for loading a file
+    openFileDialog = () => {
+        document.getElementById("load").click();
+    }
     // Rendering component
     render(){
         return (
@@ -32,7 +36,8 @@ class ButtonPanel extends React.Component {
                 <button class="btn btn-success me-auto" title="Add New Cube" onClick={this.props.addNewCube}>
                     <i class="bi bi-box-fill"></i>
                 </button>
-                <button class="btn btn-primary me-2" title="Load Your Model" onClick={alert}>
+                <input type="file" id="load" class="d-none" />
+                <button class="btn btn-primary me-2" title="Load Your Model" onClick={this.openFileDialog}>
                     <i class="bi bi-upload"></i>
                 </button>
                 <a class="btn btn-primary me-auto" title="Download Current Model" href={"data:application/octet-stream," + encodeURI(this.props.DOM.outerHTML)} download="CSS_3D_Model.html">
