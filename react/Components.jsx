@@ -63,13 +63,17 @@ class CustomProperty extends React.Component {
         this.props.value = event.target.value;
         this.props.onChangeHandler(this.props.name, this.props.name, event.target.value);
     }
+    // Removing style property
+    removeStyleProperty = () => {
+        this.props.removeStyleProperty(this.props.name);
+    }
     // Rendering component
     render(){
         return(
             <div class="input-group mb-3">
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} />
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} />
-                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                <button class="btn btn-danger" onClick={this.removeStyleProperty}><i class="bi bi-trash-fill"></i></button>
             </div>
         );
     }

@@ -97,10 +97,15 @@ class Properties extends React.Component {
             parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].slice(1)
         return parts.join("");
     }
+    // Removing style property
+    removeStyleProperty = (name) => {
+        this.props.currentElement.style.removeProperty(name);
+        this.props.updateApplication();
+    }
     // Setting value for a custom property
     setCustomProperty = (oldName, name, value) => {
         if(!(oldName == name))
-            this.props.currentElement.style.removeProperty(oldName);
+            this.removeStyleProperty(oldName);
         this.props.currentElement.style[this.getStylePropertyName(name)] = value;
         this.props.updateApplication();
     }
@@ -115,7 +120,7 @@ class Properties extends React.Component {
                 <VectorProperty name={"Scale"} x={this.transform.scale.x} y={this.transform.scale.y} z={this.transform.scale.z} locked={true} onChangeHandler={this.setNewScale} />
                 <VectorProperty name={"Size"} x={styles.width ? styles.width : "0"} y={styles.height ? styles.height : "0"} locked={false} onChangeHandler={this.setNewSize} />
                 {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
-                    <CustomProperty name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} />
+                    <CustomProperty name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} removeStyleProperty={this.removeStyleProperty} />
                 ))}
                 <NewPropertyButtons />
             </Wrapper>
