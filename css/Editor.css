@@ -2,8 +2,16 @@
     background-color: var(--bs-secondary) !important;
 }
 
-[data-modeller-current="true"] {
+[data-modeller-current="true"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     outline: 3px dashed var(--bs-danger);
+    outline-offset: 2px;
+    z-index: 5000;
 }
 
 .accordion-button::after {
