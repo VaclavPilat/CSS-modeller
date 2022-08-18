@@ -55,6 +55,12 @@ class Properties extends React.Component {
         }
         return transform;
     }
+    // Setting new element size
+    setNewSize = (width, height) => {
+        this.props.currentElement.style.width = width;
+        this.props.currentElement.style.height = height;
+        this.props.updateApplication();
+    }
     // Rendering component
     render(){
         var styles = this.parseStyleProperties(this.props.currentElement.getAttribute("style"));
@@ -64,7 +70,7 @@ class Properties extends React.Component {
                 <VectorProperty name={"Position"} x={this.transform.translate.x} y={this.transform.translate.y} z={this.transform.translate.z} locked={false} />
                 <VectorProperty name={"Rotation"} x={this.transform.rotate.x} y={this.transform.rotate.y} z={this.transform.rotate.z} locked={false} />
                 <VectorProperty name={"Scale"} x={this.transform.scale.x} y={this.transform.scale.y} z={this.transform.scale.z} locked={true} />
-                <VectorProperty name={"Size"} x={styles.width ? styles.width : "0"} y={styles.height ? styles.height : "0"} locked={false} />
+                <VectorProperty name={"Size"} x={styles.width ? styles.width : "0"} y={styles.height ? styles.height : "0"} locked={false} onChangeHandler={this.setNewSize} />
                 {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
                     <CustomProperty name={property} value={styles[property]} />
                 ))}
@@ -74,23 +80,36 @@ class Properties extends React.Component {
     }
 }
 
-
-
 // Class for visualising an vector
 class VectorProperty extends React.Component {
+    // On X change
+    onChangeX = (event) => {
+        this.props.x = event.target.value;
+        this.props.onChangeHandler(event.target.value, this.props.y, this.props.z);
+    }
+    // On Y change
+    onChangeY = (event) => {
+        this.props.y = event.target.value;
+        this.props.onChangeHandler(this.props.x, event.target.value, this.props.z);
+    }
+    // On Z change
+    onChangeZ = (event) => {
+        this.props.z = event.target.value;
+        this.props.onChangeHandler(this.props.x, this.props.y, event.target.value);
+    }
     // Rendering component
     render(){
         return(
             <div class="input-group mb-3">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">{this.props.name}</span>
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-top-0 border-bottom-0 border-end-0">X</span>
-                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.x} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.x} onChange={this.onChangeX} />
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-0">Y</span>
-                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.y} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.y} onChange={this.onChangeY} />
                 {this.props.z && (
                     <Wrapper>
                         <span class="input-group-text bg-secondary bg-opacity-75 text-white border-0">Z</span>
-                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} />
+                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} onChange={this.onChangeZ} />
                     </Wrapper>
                 )}
                 <button class="btn btn-warning">
@@ -102,6 +121,14 @@ class VectorProperty extends React.Component {
                 </button>
             </div>
         );
+    }
+    // 
+    componentDidUpdate(){
+        console.log(JSON.stringify([
+            this.props.x,
+            this.props.y,
+            this.props.z
+        ]));
     }
 }
 

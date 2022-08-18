@@ -99,6 +99,7 @@ class App extends React.Component {
                         currentElement={this.state.currentElement} 
                         setCurrentElement={this.setCurrentElement}
                         removeElement={this.removeElement}
+                        updateApplication={this.updateApplication}
                     />
                 </div>
             </div>

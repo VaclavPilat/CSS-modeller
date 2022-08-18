@@ -23,7 +23,7 @@ class Settings extends React.Component {
                         <Treeview>{this.getHierarchyItems(this.props.DOM)}</Treeview>
                     </AccordionItem>
                     <AccordionItem name={"Properties" + (this.props.currentElement != null ? " of " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
-                        <Properties currentElement={this.props.currentElement} />
+                        <Properties currentElement={this.props.currentElement} updateApplication={this.props.updateApplication} />
                     </AccordionItem>
                 </Accordion>
             </div>
