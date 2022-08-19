@@ -11,7 +11,6 @@ class VectorProperty extends React.Component {
     // Applying changes
     applyChanges = () => {
         this.props.onChangeHandler(this.props.x, this.props.y, this.props.z);
-        this.forceUpdate();
     }
     // Applying changes on Enter
     applyChangesOnEnter = (event) => {
@@ -62,16 +61,28 @@ class VectorProperty extends React.Component {
 
 // Class for visualising a list of custom properties
 class CustomProperty extends React.Component {
+    // Applying changes
+    applyChanges = () => {
+        this.props.onChangeHandler((this.props.oldName ? this.props.oldName : this.props.name), this.props.name, this.props.value);
+        this.props.oldName = null;
+    }
+    // Applying changes on Enter
+    applyChangesOnEnter = (event) => {
+        if(event.key === "Enter")
+            this.applyChanges();
+    }
     // Property name change
     onNameChange = (event) => {
-        var old = (' ' + this.props.name).slice(1);
+        if(!(this.props.oldName))
+            if(event.target.value != this.props.name)
+                this.props.oldName = (' ' + this.props.name).slice(1);
         this.props.name = event.target.value;
-        this.props.onChangeHandler(old, event.target.value, this.props.value);
+        this.forceUpdate();
     }
     // Property name change
     onValueChange = (event) => {
         this.props.value = event.target.value;
-        this.props.onChangeHandler(this.props.name, this.props.name, event.target.value);
+        this.forceUpdate();
     }
     // Removing style property
     removeStyleProperty = () => {
@@ -81,8 +92,8 @@ class CustomProperty extends React.Component {
     render(){
         return(
             <div class="input-group mb-3">
-                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} />
-                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 <button class="btn btn-danger" onClick={this.removeStyleProperty}><i class="bi bi-trash-fill"></i></button>
             </div>
         );
