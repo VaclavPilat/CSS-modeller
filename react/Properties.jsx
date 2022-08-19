@@ -109,6 +109,13 @@ class Properties extends React.Component {
         this.props.currentElement.style[this.getStylePropertyName(name)] = value;
         this.props.updateApplication();
     }
+    // Add custom property
+    addCustomProperty = (name) => {
+        if(this.props.currentElement.style[name])
+            return
+        this.props.currentElement.style[name] = "initial";
+        this.props.updateApplication();
+    }
     // Rendering component
     render(){
         var styles = this.parseStyleProperties(this.props.currentElement.getAttribute("style"));
@@ -122,7 +129,7 @@ class Properties extends React.Component {
                 {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
                     <CustomProperty name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} removeStyleProperty={this.removeStyleProperty} />
                 ))}
-                <NewPropertyButtons />
+                <NewPropertyButtons addCustomProperty={this.addCustomProperty} />
             </Wrapper>
         );
     }

@@ -81,16 +81,21 @@ class CustomProperty extends React.Component {
 
 // Class for property buttons
 class NewPropertyButtons extends React.Component {
+    // Adding new style property
+    onItemClick = (event) => {
+        this.props.addCustomProperty(event.target.innerText);
+    }
     // Rendering component
     render(){
+        var items = ["background-color", "border", "border-image", "border-style", "border-width", "opacity"];
         return(
             <div class="input-group m-0 w-100">
                 <button type="button" class="btn btn-primary flex-grow-1">Add New Property</button>
                 <button type="button" class="btn btn-primary flex-shrink-1 dropdown-toggle dropdown-toggle-split px-3" data-bs-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark">
-                    <li><button class="dropdown-item">background-color</button></li>
-                    <li><button class="dropdown-item">border</button></li>
-                    <li><button class="dropdown-item">opacity</button></li>
+                    {items.map((item) => 
+                        <li><button class="dropdown-item" onClick={this.onItemClick}>{item}</button></li>
+                    )}
                 </ul>
             </div>
 
