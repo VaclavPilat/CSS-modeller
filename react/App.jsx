@@ -3,18 +3,30 @@ class App extends React.Component {
     // Constructor
     constructor(){
         super();
-        var HTML = `<div data-modeller-title="scene" style="width: 400px; height: 400px; position: relative;"></div>`;
-        var element = document.createElement("div");
-        element.innerHTML = HTML;
-        var DOM = element.children[0];
-        this.removeAttributes(DOM, "data-modeller-current");
-        DOM.setAttribute("data-modeller-current", "true");
+        var DOM = this.getElementFromHTML(`<div data-modeller-title="scene" style="width: 400px; height: 400px; position: relative;"></div>`);
         this.state = {
             DOM: DOM,
             currentElement: DOM,
             modellerCol: "col-8",
             settingsCol: "col-4"
         }
+    }
+    // Getting DOM from HTML
+    getElementFromHTML = (HTML) => {
+        var element = document.createElement("div");
+        element.innerHTML = HTML;
+        var DOM = element.children[0];
+        this.removeAttributes(DOM, "data-modeller-current");
+        DOM.setAttribute("data-modeller-current", "true");
+        return DOM;
+    }
+    // Loading new model
+    loadNewModel = (HTML) => {
+        var DOM = this.getElementFromHTML(HTML);
+        this.setState({
+            DOM: DOM,
+            currentElement: DOM
+        });
     }
     // Removing attribute from elements in DOM
     removeAttributes = (DOM, attribute) => {
@@ -109,6 +121,7 @@ class App extends React.Component {
                     addNewCube={this.addNewCube} 
                     changePageLayout={this.changePageLayout}
                     DOM={this.state.DOM}
+                    loadNewModel={this.loadNewModel}
                 />
                 <div class="m-0 p-0 w-100 row flex-grow-1">
                     <Modeller 

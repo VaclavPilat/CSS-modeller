@@ -20,6 +20,22 @@ class ButtonPanel extends React.Component {
     openFileDialog = () => {
         document.getElementById("load").click();
     }
+    // Loading new model
+    loadNewModel = (event) => {
+        this.props.loadNewModel(event.target.result);
+    }
+    // Reading loaded file
+    readLoadedFile = () => {
+        var file = document.getElementById("load").files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.readAsText(file, "UTF-8");
+            reader.onload = this.loadNewModel;
+            reader.onerror = function (evt) {
+                alert("error reading file");
+            }
+        }
+    }
     // Rendering component
     render(){
         return (
@@ -36,7 +52,7 @@ class ButtonPanel extends React.Component {
                 <button class="btn btn-success me-auto" title="Add New Cube" onClick={this.props.addNewCube}>
                     <i class="bi bi-box-fill"></i>
                 </button>
-                <input type="file" id="load" class="d-none" />
+                <input type="file" id="load" class="d-none" onChange={this.readLoadedFile} />
                 <button class="btn btn-primary me-2" title="Load Your Model" onClick={this.openFileDialog}>
                     <i class="bi bi-upload"></i>
                 </button>
