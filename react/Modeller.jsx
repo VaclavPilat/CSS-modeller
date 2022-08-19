@@ -14,4 +14,13 @@ class Modeller extends React.Component {
     componentDidMount(){
         document.getElementById("modeller").appendChild(this.props.DOM);
     }
+    // Checking if DOM has changed
+    componentDidUpdate(){
+        var oldHTML = document.getElementById("modeller").innerHTML;
+        var newHTML = this.props.DOM.outerHTML;
+        if(!(oldHTML == newHTML)){
+            document.getElementById("modeller").innerHTML = '';
+            document.getElementById("modeller").appendChild(this.props.DOM);
+        }
+    }
 }
