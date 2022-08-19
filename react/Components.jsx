@@ -81,17 +81,40 @@ class CustomProperty extends React.Component {
 
 // Class for property buttons
 class NewPropertyButtons extends React.Component {
+    // Constructor
+    constructor(){
+        super();
+        this.state = {
+            value: ""
+        }
+    }
     // Adding new style property
     onItemClick = (event) => {
         this.props.addCustomProperty(event.target.innerText);
+    }
+    // Changing stored value
+    onInputChange = (event) => {
+        this.setState({
+            value: event.target.value
+        });
+    }
+    // Adding new property on Enter
+    onEnterAddProperty = (event) => {
+        if(event.key === "Enter"){
+            this.props.addCustomProperty(event.target.value);
+            this.setState({
+                value: ""
+            });
+        }
     }
     // Rendering component
     render(){
         var items = ["background-color", "border", "border-image", "border-style", "border-width", "opacity"];
         return(
             <div class="input-group m-0 w-100">
-                <button type="button" class="btn btn-primary flex-grow-1">Add New Property</button>
-                <button type="button" class="btn btn-primary flex-shrink-1 dropdown-toggle dropdown-toggle-split px-3" data-bs-toggle="dropdown"></button>
+                <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">New</span>
+                <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
+                <button type="button" class="btn btn-primary dropdown-toggle px-3" data-bs-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark">
                     {items.map((item) => 
                         <li><button class="dropdown-item" onClick={this.onItemClick}>{item}</button></li>
