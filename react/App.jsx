@@ -62,7 +62,13 @@ class App extends React.Component {
     // Adding new circle
     addNewCircle = () => {
         this.addNewShape(
-            `<div data-modeller-title="circle" style="position: absolute; width: 100px; height: 100px; background-color: lightgreen; border-radius: 50%"></div>`
+            `<div data-modeller-title="circle" style="position: absolute; width: 100px; height: 100px; background-color: lightgreen; border-radius: 50%;"></div>`
+        );
+    }
+    // Adding new triangle
+    addNewTriangle = () => {
+        this.addNewShape(
+            `<div data-modeller-title="triangle" style="position: absolute; width: 0px; height: 0px; border-bottom: 86.60254037844386px solid lightyellow; border-left: 50px solid transparent; border-right: 50px solid transparent;"></div>`
         );
     }
     // Adding new cube
@@ -118,6 +124,7 @@ class App extends React.Component {
                     addEmptyObject={this.addEmptyObject}
                     addNewSquare={this.addNewSquare} 
                     addNewCircle={this.addNewCircle} 
+                    addNewTriangle={this.addNewTriangle}
                     addNewCube={this.addNewCube} 
                     changePageLayout={this.changePageLayout}
                     DOM={this.state.DOM}
