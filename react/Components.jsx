@@ -8,20 +8,30 @@ class Wrapper extends React.Component {
 
 // Class for visualising an vector
 class VectorProperty extends React.Component {
+    // Applying changes
+    applyChanges = () => {
+        this.props.onChangeHandler(this.props.x, this.props.y, this.props.z);
+        this.forceUpdate();
+    }
+    // Applying changes on Enter
+    applyChangesOnEnter = (event) => {
+        if(event.key === "Enter")
+            this.applyChanges();
+    }
     // On X change
     onChangeX = (event) => {
         this.props.x = event.target.value;
-        this.props.onChangeHandler(event.target.value, this.props.y, this.props.z);
+        this.forceUpdate();
     }
     // On Y change
     onChangeY = (event) => {
         this.props.y = event.target.value;
-        this.props.onChangeHandler(this.props.x, event.target.value, this.props.z);
+        this.forceUpdate();
     }
     // On Z change
     onChangeZ = (event) => {
         this.props.z = event.target.value;
-        this.props.onChangeHandler(this.props.x, this.props.y, event.target.value);
+        this.forceUpdate();
     }
     // Rendering component
     render(){
@@ -29,13 +39,13 @@ class VectorProperty extends React.Component {
             <div class="input-group mb-3">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">{this.props.name}</span>
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-top-0 border-bottom-0 border-end-0">X</span>
-                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.x} onChange={this.onChangeX} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.x} onChange={this.onChangeX} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-0">Y</span>
-                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.y} onChange={this.onChangeY} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.y} onChange={this.onChangeY} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 {this.props.z && (
                     <Wrapper>
                         <span class="input-group-text bg-secondary bg-opacity-75 text-white border-0">Z</span>
-                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} onChange={this.onChangeZ} />
+                        <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} onChange={this.onChangeZ} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                     </Wrapper>
                 )}
                 <button class="btn btn-warning">
