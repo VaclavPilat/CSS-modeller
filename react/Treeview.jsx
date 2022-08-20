@@ -25,7 +25,7 @@ class TreeviewItem extends React.Component {
         var ID = createUniqueID();
         return (
             <li class="m-0 p-0">
-                <div class="input-group m-0 mt-1 p-0" draggable="true">
+                <div class="input-group m-0 mt-1 p-0" draggable={!this.props.root}>
                     {this.props.element.children.length > 0 && (
                         <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
                     )}
