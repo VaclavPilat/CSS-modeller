@@ -17,6 +17,7 @@ class VectorProperty extends React.Component {
     }
     // Applying changes
     applyChanges = () => {
+        this.applyRatio();
         this.props.onChangeHandler(this.props.x, this.props.y, this.props.z);
     }
     // Applying changes on Enter
@@ -24,29 +25,82 @@ class VectorProperty extends React.Component {
         if(event.key === "Enter")
             this.applyChanges();
     }
+    // Getting ratio
+    getRatio = (x = false, y = false, z = false) => {
+        var parsedX = parseFloat(this.props.x);
+        var parsedY = parseFloat(this.props.y);
+        var parsedZ = parseFloat(this.props.z);
+        if((x && parsedX == 0) || (y && parsedY == 0) || (z && parsedZ == 0))
+            return [NaN, NaN, NaN];
+        if(x)
+            return [1, (parsedY == 0 ? 0 : parsedY/parsedX), (parsedZ == 0 ? 0 : parsedZ/parsedX)];
+        else if(y)
+            return [(parsedX == 0 ? 0 : parsedX/parsedY), 1, (parsedZ == 0 ? 0 : parsedZ/parsedY)];
+        else
+            return [(parsedX == 0 ? 0 : parsedX/parsedZ), (parsedY == 0 ? 0 : parsedY/parsedZ), 1];
+    }
+    // Applying ratio
+    applyRatio = () => {
+        if(this.state.locked && this.props.ratio){
+            if(!isNaN(this.props.ratio[0])){
+                var parsedX = parseFloat(this.props.x);
+                this.props.x = this.props.x.replace(parsedX.toString(), (parseFloat(this.props.ratioValue)*this.props.ratio[0]).toString());
+            }
+            if(!isNaN(this.props.ratio[1])){
+                var parsedY = parseFloat(this.props.y);
+                this.props.y = this.props.y.replace(parsedY.toString(), (parseFloat(this.props.ratioValue)*this.props.ratio[1]).toString());
+            }
+            if(this.props.z && !isNaN(this.props.ratio[2])){
+                var parsedZ = parseFloat(this.props.z);
+                this.props.z = this.props.z.replace(parsedZ.toString(), (parseFloat(this.props.ratioValue)*this.props.ratio[2]).toString());
+            }
+            this.props.ratio = null;
+            this.props.ratioValue = null;
+        }
+    }
     // On X change
     onChangeX = (event) => {
+        if(this.state.locked){
+            var r = this.getRatio(true);
+            console.log(r);
+            this.props.ratio = r;
+            this.props.ratioValue = event.target.value;
+        }
         this.props.x = event.target.value;
         this.forceUpdate();
     }
     // On Y change
     onChangeY = (event) => {
+        if(this.state.locked){
+            this.props.ratio = this.getRatio(false, true);
+            this.props.ratioValue = event.target.value;
+        }
         this.props.y = event.target.value;
         this.forceUpdate();
     }
     // On Z change
     onChangeZ = (event) => {
+        if(this.state.locked){
+            this.props.ratio = this.getRatio(false, false, true);
+            this.props.ratioValue = event.target.value;
+        }
         this.props.z = event.target.value;
         this.forceUpdate();
     }
     // Changing locked state
     changeLockedState = () => {
+        if(this.props.ratio){
+            this.props.ratio = null;
+            this.props.ratioValue = null;
+        }
         this.setState({
             locked: !this.state.locked
         });
     }
     // Rendering component
     render(){
+        if(this.props.name == "Scale")
+            console.log(this.props.name + " :: " + this.props.x + " (" + typeof this.props.x + "), " + this.props.y + " (" + typeof this.props.y + "), " + this.props.z + " (" + typeof this.props.z + ")");
         return(
             <div class="input-group mb-3">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">{this.props.name}</span>
