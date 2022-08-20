@@ -8,6 +8,13 @@ class Wrapper extends React.Component {
 
 // Class for visualising an vector
 class VectorProperty extends React.Component {
+    // Constructor
+    constructor(props){
+        super();
+        this.state = {
+            locked: props.locked
+        };
+    }
     // Applying changes
     applyChanges = () => {
         this.props.onChangeHandler(this.props.x, this.props.y, this.props.z);
@@ -32,6 +39,12 @@ class VectorProperty extends React.Component {
         this.props.z = event.target.value;
         this.forceUpdate();
     }
+    // Changing locked state
+    changeLockedState = () => {
+        this.setState({
+            locked: !this.state.locked
+        });
+    }
     // Rendering component
     render(){
         return(
@@ -47,8 +60,8 @@ class VectorProperty extends React.Component {
                         <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} onChange={this.onChangeZ} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                     </Wrapper>
                 )}
-                <button class="btn btn-warning">
-                    {this.props.locked ? (
+                <button class="btn btn-warning" onClick={this.changeLockedState}>
+                    {this.state.locked ? (
                         <i class="bi bi-lock-fill"></i>
                     ) : (
                         <i class="bi bi-unlock-fill"></i>
