@@ -61,9 +61,8 @@ class VectorProperty extends React.Component {
     // On X change
     onChangeX = (event) => {
         if(this.state.locked){
-            var r = this.getRatio(true);
-            console.log(r);
-            this.props.ratio = r;
+            if(!(this.props.ratio))
+                this.props.ratio = this.getRatio(false, true);
             this.props.ratioValue = event.target.value;
         }
         this.props.x = event.target.value;
@@ -72,7 +71,8 @@ class VectorProperty extends React.Component {
     // On Y change
     onChangeY = (event) => {
         if(this.state.locked){
-            this.props.ratio = this.getRatio(false, true);
+            if(!(this.props.ratio))
+                this.props.ratio = this.getRatio(false, true);
             this.props.ratioValue = event.target.value;
         }
         this.props.y = event.target.value;
@@ -81,7 +81,8 @@ class VectorProperty extends React.Component {
     // On Z change
     onChangeZ = (event) => {
         if(this.state.locked){
-            this.props.ratio = this.getRatio(false, false, true);
+            if(!(this.props.ratio))
+                this.props.ratio = this.getRatio(false, false, true);
             this.props.ratioValue = event.target.value;
         }
         this.props.z = event.target.value;
@@ -99,8 +100,6 @@ class VectorProperty extends React.Component {
     }
     // Rendering component
     render(){
-        if(this.props.name == "Scale")
-            console.log(this.props.name + " :: " + this.props.x + " (" + typeof this.props.x + "), " + this.props.y + " (" + typeof this.props.y + "), " + this.props.z + " (" + typeof this.props.z + ")");
         return(
             <div class="input-group mb-3">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">{this.props.name}</span>
