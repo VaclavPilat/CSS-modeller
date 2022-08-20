@@ -113,7 +113,7 @@ class VectorProperty extends React.Component {
                         <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} onChange={this.onChangeZ} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                     </Wrapper>
                 )}
-                <button class="btn btn-warning" onClick={this.changeLockedState}>
+                <button class={"btn " + (this.state.locked ? "btn-warning" : "btn-light")} onClick={this.changeLockedState}>
                     {this.state.locked ? (
                         <i class="bi bi-lock-fill"></i>
                     ) : (
