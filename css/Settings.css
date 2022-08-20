@@ -18,3 +18,11 @@
     border-color: var(--bs-warning) !important;
     color: var(--bs-warning) !important;
 }
+
+#properties > .accordion-body > div > .input-group:last-of-type {
+    margin-bottom: 0 !important;
+}
+
+#properties > .accordion-body > div:not(:has(div)) {
+    margin-bottom: 0 !important;
+}

@@ -93,7 +93,7 @@ class VectorProperty extends React.Component {
     // Rendering component
     render(){
         return(
-            <div class="input-group mb-3">
+            <div class="input-group mb-1">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">{this.props.name}</span>
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-top-0 border-bottom-0 border-end-0">X</span>
                 <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.x} onChange={this.onChangeX} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
@@ -149,7 +149,7 @@ class CustomProperty extends React.Component {
     // Rendering component
     render(){
         return(
-            <div class="input-group mb-3">
+            <div class="input-group mb-1">
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 <button class="btn btn-danger" onClick={this.removeStyleProperty}><i class="bi bi-trash-fill"></i></button>

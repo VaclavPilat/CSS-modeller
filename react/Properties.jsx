@@ -122,13 +122,17 @@ class Properties extends React.Component {
         this.transform = this.getTransformObject(styles);
         return(
             <Wrapper>
-                <VectorProperty name={"Position"} x={this.transform.translate.x} y={this.transform.translate.y} z={this.transform.translate.z} locked={false} onChangeHandler={this.setNewPosition} />
-                <VectorProperty name={"Rotation"} x={this.transform.rotate.x} y={this.transform.rotate.y} z={this.transform.rotate.z} locked={false} onChangeHandler={this.setNewRotation} />
-                <VectorProperty name={"Scale"} x={this.transform.scale.x} y={this.transform.scale.y} z={this.transform.scale.z} locked={true} onChangeHandler={this.setNewScale} />
-                <VectorProperty name={"Size"} x={styles.width ? styles.width : "0"} y={styles.height ? styles.height : "0"} locked={false} onChangeHandler={this.setNewSize} />
-                {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
-                    <CustomProperty name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} removeStyleProperty={this.removeStyleProperty} />
-                ))}
+                <div class="m-0 mb-3 p-0">
+                    <VectorProperty name={"Position"} x={this.transform.translate.x} y={this.transform.translate.y} z={this.transform.translate.z} locked={false} onChangeHandler={this.setNewPosition} />
+                    <VectorProperty name={"Rotation"} x={this.transform.rotate.x} y={this.transform.rotate.y} z={this.transform.rotate.z} locked={false} onChangeHandler={this.setNewRotation} />
+                    <VectorProperty name={"Scale"} x={this.transform.scale.x} y={this.transform.scale.y} z={this.transform.scale.z} locked={true} onChangeHandler={this.setNewScale} />
+                    <VectorProperty name={"Size"} x={styles.width ? styles.width : "0"} y={styles.height ? styles.height : "0"} locked={false} onChangeHandler={this.setNewSize} />
+                </div>
+                <div class="m-0 mb-3 p-0">
+                    {Object.keys(styles).filter(key => key !== "width" && key != "height" && key != "transform").map((property, i) => (
+                        <CustomProperty name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} removeStyleProperty={this.removeStyleProperty} />
+                    ))}
+                </div>
                 <NewPropertyButtons addCustomProperty={this.addCustomProperty} />
             </Wrapper>
         );
