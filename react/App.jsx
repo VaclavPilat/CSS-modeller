@@ -144,6 +144,7 @@ class App extends React.Component {
                         setCurrentElement={this.setCurrentElement}
                         removeElement={this.removeElement}
                         updateApplication={this.updateApplication}
+                        removeAttributes={this.removeAttributes}
                     />
                 </div>
             </div>

@@ -10,6 +10,8 @@ class Settings extends React.Component {
                 current={this.props.currentElement == element} 
                 setCurrentElement={this.props.setCurrentElement}
                 updateApplication={this.props.updateApplication}
+                DOM={this.props.DOM}
+                removeAttributes={this.props.removeAttributes}
             >{Array.prototype.slice.call(element.children).map((child) => {
                 return this.getHierarchyItems(child, false);
             })}</TreeviewItem>
