@@ -32,7 +32,9 @@ class TreeviewItem extends React.Component {
     onDrop = (event) => {
         event.preventDefault();
         var element = document.querySelector('[data-model-drag="true"]');
-        this.props.element.appendChild(element);
+        try {
+            this.props.element.appendChild(element);
+        }catch(e){}
         this.props.removeAttributes(this.props.DOM, ["data-model-drag"]);
         this.props.updateApplication();
     }
