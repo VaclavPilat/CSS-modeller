@@ -49,7 +49,10 @@ class TreeviewItem extends React.Component {
                     )}
                     <div class={"btn input-group-text flex-grow-1 text-uppercase text-start " + (this.props.current ? "bg-white bg-opacity-50 border-white border-opacity-50 text-black" : "bg-secondary bg-opacity-75 border-secondary border-opacity-75 text-white")} onClick={this.setCurrentElement}>{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</div>
                     {!this.props.root ? (
-                        <button class="btn btn-danger" onClick={this.removeElement}><i class="bi bi-trash-fill" title="Remove Element"></i></button>
+                        <Wrapper>
+                            <button class="btn btn-warning" title="Duplicate Element"><i class="bi bi-files"></i></button>
+                            <button class="btn btn-danger" onClick={this.removeElement} title="Remove Element"><i class="bi bi-trash-fill"></i></button>
+                        </Wrapper>                            
                     ) : ( null )}
                 </div>
                 {this.props.element.children.length > 0 && (
