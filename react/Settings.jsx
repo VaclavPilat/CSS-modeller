@@ -9,6 +9,7 @@ class Settings extends React.Component {
                 removeElement={this.props.removeElement} 
                 current={this.props.currentElement == element} 
                 setCurrentElement={this.props.setCurrentElement}
+                updateApplication={this.props.updateApplication}
             >{Array.prototype.slice.call(element.children).map((child) => {
                 return this.getHierarchyItems(child, false);
             })}</TreeviewItem>
@@ -20,7 +21,7 @@ class Settings extends React.Component {
             <div class={"m-0 p-0 overflow-auto position-relative bg-secondary bg-opacity-25 border-start border-secondary " + this.props.col}>
                 <Accordion>
                     <AccordionItem name="Hierarchy" ID="hierarchy">
-                        <Treeview>{this.getHierarchyItems(this.props.DOM)}</Treeview>
+                        <Treeview root={true}>{this.getHierarchyItems(this.props.DOM)}</Treeview>
                     </AccordionItem>
                     <AccordionItem name={"Properties" + (this.props.currentElement != null ? " of " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
                         <Properties currentElement={this.props.currentElement} updateApplication={this.props.updateApplication} />

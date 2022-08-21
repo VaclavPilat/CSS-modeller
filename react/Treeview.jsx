@@ -1,9 +1,21 @@
 // Treeview
 class Treeview extends React.Component {
+    // Action taken when TreeviewItem is dragged over
+    onDragOver = (event) => {
+        event.preventDefault();
+    }
+    // Dropping TreeviewItem element
+    onDrop = (event) => {
+        console.log(this.props.element);
+        event.preventDefault();
+        var element = document.querySelector('[data-model-drag="true"]');
+        this.props.element.appendChild(element);
+        this.props.updateApplication();
+    }
     // Rendering component
     render(){
         return (
-            <ul class={"list-unstyled m-0 pt-0 pe-0 pb-0 " + (this.props.ID != null ? "collapse show" : "")} id={this.props.ID} style={{paddingLeft: (this.props.ID != null ? "2.65rem" : "0")}}>
+            <ul class={"list-unstyled m-0 pt-0 pe-0 pb-0 " + (this.props.ID != null ? "collapse show" : "")} id={this.props.ID} style={{paddingLeft: (this.props.ID != null ? "2.65rem" : "0")}} onDrop={this.props.root ? null : this.onDrop} onDragOver={this.props.root ? null : this.onDragOver}>
                 {this.props.children}
             </ul>
         );
@@ -20,12 +32,21 @@ class TreeviewItem extends React.Component {
     setCurrentElement = () => {
         this.props.setCurrentElement(this.props.element);
     }
+    // Setting data when dragging starts
+    onDragStart = (event) => {
+        this.props.element.setAttribute("data-model-drag", "true");
+        //event.dataTransfer.setData("element", this.props.element);
+    }
+    // Removing set data after dragging ends
+    onDragEnd = (event) => {
+        this.props.element.removeAttribute("data-model-drag");
+    }
     // Rendering component
     render(){
         var ID = createUniqueID();
         return (
             <li class="m-0 p-0">
-                <div class="input-group m-0 mt-1 p-0" draggable={!this.props.root}>
+                <div class="input-group m-0 mt-1 p-0" draggable={!this.props.root} onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}>
                     {this.props.element.children.length > 0 && (
                         <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
                     )}
@@ -35,7 +56,7 @@ class TreeviewItem extends React.Component {
                     ) : ( null )}
                 </div>
                 {this.props.element.children.length > 0 && (
-                    <Treeview ID={ID}>
+                    <Treeview ID={ID} element={this.props.element} root={false} updateApplication={this.props.updateApplication}>
                         {this.props.children}
                     </Treeview>
                 )}
