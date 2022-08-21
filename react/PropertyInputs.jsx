@@ -105,7 +105,7 @@ class VectorProperty extends React.Component {
                         <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="0" value={this.props.z} onChange={this.onChangeZ} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                     </Wrapper>
                 )}
-                <button class={"btn " + (this.state.locked ? "btn-warning" : "btn-light")} onClick={this.changeLockedState}>
+                <button class={"btn " + (this.state.locked ? "btn-warning" : "btn-light")} onClick={this.changeLockedState} title={this.state.locked ? "Disable Ratio" : "Enable Ratio"}>
                     {this.state.locked ? (
                         <i class="bi bi-lock-fill"></i>
                     ) : (
@@ -152,7 +152,7 @@ class CustomProperty extends React.Component {
             <div class="input-group mb-1">
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
-                <button class="btn btn-danger" onClick={this.removeStyleProperty}><i class="bi bi-trash-fill"></i></button>
+                <button class="btn btn-danger" onClick={this.removeStyleProperty} title="Remove Property"><i class="bi bi-trash-fill"></i></button>
             </div>
         );
     }
@@ -193,7 +193,7 @@ class NewPropertyButtons extends React.Component {
             <div class="input-group m-0 w-100">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">New</span>
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
-                <button type="button" class="btn btn-primary dropdown-toggle px-3" data-bs-toggle="dropdown"></button>
+                <button type="button" class="btn btn-primary dropdown-toggle px-3" data-bs-toggle="dropdown" title="Common Properties"></button>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark">
                     {items.map((item) => 
                         <li><button class="dropdown-item" onClick={this.onItemClick}>{item}</button></li>
