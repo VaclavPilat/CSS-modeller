@@ -28,6 +28,9 @@ class Settings extends React.Component {
                     <AccordionItem name={"Properties" + (this.props.currentElement != null ? " of " + this.props.currentElement.getAttribute("data-modeller-title").toUpperCase() : "")} ID="properties">
                         <Properties currentElement={this.props.currentElement} updateApplication={this.props.updateApplication} />
                     </AccordionItem>
+                    <AccordionItem name={"Style editor"} ID="styles">
+                        Styles
+                    </AccordionItem>
                 </Accordion>
             </div>
         );
