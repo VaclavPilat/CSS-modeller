@@ -16,7 +16,7 @@ class App extends React.Component {
         var element = document.createElement("div");
         element.innerHTML = HTML;
         var DOM = element.children[0];
-        this.removeAttributes(DOM, "data-modeller-current");
+        this.removeAttributes(DOM, ["data-modeller-current", "data-modeller-drag"]);
         DOM.setAttribute("data-modeller-current", "true");
         return DOM;
     }
@@ -29,10 +29,12 @@ class App extends React.Component {
         });
     }
     // Removing attribute from elements in DOM
-    removeAttributes = (DOM, attribute) => {
-        DOM.removeAttribute(attribute);
-        for(var i = 0; i < DOM.children.length; i++)
-            this.removeAttributes(DOM.children[i], attribute);
+    removeAttributes = (DOM, attributes) => {
+        var i;
+        for(i = 0; i < attributes.length; i++)
+            DOM.removeAttribute(attributes[i]);
+        for(i = 0; i < DOM.children.length; i++)
+            this.removeAttributes(DOM.children[i], attributes);
     }
     // Updating application
     updateApplication = () => {
