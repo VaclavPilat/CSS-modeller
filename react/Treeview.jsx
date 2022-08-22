@@ -22,7 +22,7 @@ class TreeviewItem extends React.Component {
     }
     // Setting data when dragging starts
     onDragStart = (event) => {
-        this.props.element.setAttribute("data-model-drag", "true");
+        this.props.element.setAttribute("data-modeller-drag", "true");
     }
     // Action taken when TreeviewItem is dragged over
     onDragOver = (event) => {
@@ -31,11 +31,11 @@ class TreeviewItem extends React.Component {
     // Dropping TreeviewItem element
     onDrop = (event) => {
         event.preventDefault();
-        var element = document.querySelector('[data-model-drag="true"]');
+        var element = document.querySelector('[data-modeller-drag="true"]');
         try {
             this.props.element.appendChild(element);
         }catch(e){}
-        this.props.removeAttributes(this.props.DOM, ["data-model-drag"]);
+        this.props.removeAttributes(this.props.DOM, ["data-modeller-drag"]);
         this.props.updateApplication();
     }
     // Duplicate element
