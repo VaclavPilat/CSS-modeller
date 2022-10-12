@@ -69,7 +69,7 @@ class NewPropertyButtons extends React.Component {
     }
     // Rendering component
     render(){
-        var items = ["background-color", "border", "border-image", "border-style", "border-width", "opacity"];
+        var items = ["background", "border", "height", "opacity", "rotate", "scale", "translate", "width"];
         return(
             <div class="input-group m-0 w-100">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">New</span>
