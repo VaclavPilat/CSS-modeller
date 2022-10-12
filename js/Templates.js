@@ -26,58 +26,57 @@ const Templates = {
         "></div>`,
     Cube: 
         `<div data-modeller-title="cube" style="
-            transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(45deg) rotateY(45deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); 
-            width: 100px; height: 100px;
+            rotate: 1 1 0 45deg;
+            width: 100px;
+            height: 100px;
             transform-style: preserve-3d;
-            position: relative;
         ">
             <div data-modeller-title="cube - front" style="
-                transform: translateX(0px) translateY(0px) translateZ(-50px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-                width: 100px; height: 100px; 
-                background-color: lightsalmon; 
+                translate: 0 0 -50px;
+                width: 100px; 
+                height: 100px; 
+                background-color: lightblue; 
                 position: absolute;
-                border: 1px solid black;
-                box-sizing: border-box;
             "></div>
             <div data-modeller-title="cube - back" style="
-                transform: translateX(0px) translateY(0px) translateZ(50px) rotateX(0deg) rotateY(180deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-                width: 100px; height: 100px; 
-                background-color: lightsalmon; 
+                translate: 0 0 50px;
+                rotate: 0 1 0 180deg;
+                width: 100px; 
+                height: 100px; 
+                background-color: lightcyan; 
                 position: absolute;
-                border: 1px solid black;
-                box-sizing: border-box;
             "></div>
             <div data-modeller-title="cube - left" style="
-                transform: translateX(-50px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(-90deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-                width: 100px; height: 100px; 
-                background-color: lightsalmon; 
+                translate: -50px 0 0;
+                rotate: 0 -1 0 90deg;
+                width: 100px; 
+                height: 100px; 
+                background-color: lightgrey; 
                 position: absolute;
-                border: 1px solid black;
-                box-sizing: border-box;
             "></div>
             <div data-modeller-title="cube - right" style="
-                transform: translateX(50px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-                width: 100px; height: 100px; 
-                background-color: lightsalmon; 
+                translate: 50px 0 0;
+                rotate: 0 1 0 90deg;
+                width: 100px; 
+                height: 100px; 
+                background-color: lightgreen; 
                 position: absolute;
-                border: 1px solid black;
-                box-sizing: border-box;
             "></div>
             <div data-modeller-title="cube - top" style="
-                transform: translateX(0px) translateY(-50px) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-                width: 100px; height: 100px; 
-                background-color: lightsalmon; 
+                translate: 0 -50px 0;
+                rotate: 1 0 0 90deg;
+                width: 100px; 
+                height: 100px; 
+                background-color: lightpink; 
                 position: absolute;
-                border: 1px solid black;
-                box-sizing: border-box;
             "></div>
             <div data-modeller-title="cube - bottom" style="
-                transform: translateX(0px) translateY(50px) translateZ(0px) rotateX(-90deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-                width: 100px; height: 100px; 
+                translate: 0 50px 0;
+                rotate: -1 0 0 90deg;
+                width: 100px; 
+                height: 100px; 
                 background-color: lightsalmon; 
                 position: absolute;
-                border: 1px solid black;
-                box-sizing: border-box;
             "></div>
         </div>`,
 }
