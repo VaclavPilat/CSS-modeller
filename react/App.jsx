@@ -119,6 +119,7 @@ class App extends React.Component {
                     <Modeller 
                         col={this.state.modellerCol} 
                         DOM={this.state.DOM}
+                        setCurrentElement={this.setCurrentElement}
                     />
                     <Settings 
                         col={this.state.settingsCol} 

@@ -12,15 +12,21 @@ class Modeller extends React.Component {
     }
     // Showing elements
     componentDidMount(){
-        document.getElementById("modeller").appendChild(this.props.DOM);
+        var modeller = document.getElementById("modeller");
+        modeller.appendChild(this.props.DOM);
+        modeller.addEventListener("click", (event) => {
+            if(event.target != modeller)
+                this.props.setCurrentElement(event.target);
+        });
     }
     // Checking if DOM has changed
     componentDidUpdate(){
-        var oldHTML = document.getElementById("modeller").innerHTML;
+        var modeller = document.getElementById("modeller");
+        var oldHTML = modeller.innerHTML;
         var newHTML = this.props.DOM.outerHTML;
         if(!(oldHTML == newHTML)){
-            document.getElementById("modeller").innerHTML = '';
-            document.getElementById("modeller").appendChild(this.props.DOM);
+            modeller.innerHTML = '';
+            modeller.appendChild(this.props.DOM);
         }
     }
 }
