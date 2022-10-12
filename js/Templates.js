@@ -2,30 +2,23 @@
 const Templates = {
     Scene: 
         `<div data-modeller-title="scene" style="
-            transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); 
             width: 800px; height: 600px;
         "></div>`,
     Empty: 
-        `<div data-modeller-title="empty object" style="
-            transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); 
-            width: 0px; height: 0px;
-        "></div>`,
+        `<div data-modeller-title="empty object" style=""></div>`,
     Square: 
         `<div data-modeller-title="square" style="
-            transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); 
             width: 100px; height: 100px; 
             background-color: lightblue;
         "></div>`,
     Circle: 
         `<div data-modeller-title="circle" style="
-            transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); 
             width: 100px; height: 100px; 
             background-color: lightgreen; 
             border-radius: 50%;
         "></div>`,
     Triangle:
         `<div data-modeller-title="triangle" style="
-            transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
             width: 0px; height: 0px; 
             border-bottom: 86.6025px solid lightyellow; 
             border-left: 50px solid transparent; 
