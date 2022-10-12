@@ -1,3 +1,7 @@
+[data-modeller-current="true"] {
+    position: relative;
+}
+
 [data-modeller-current="true"]::after {
     content: '';
     position: absolute;
