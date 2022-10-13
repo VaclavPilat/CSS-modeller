@@ -26,3 +26,9 @@
 #properties > .accordion-body > div:empty {
     margin-bottom: 0 !important;
 }
+
+#properties .property-name {
+    width: calc(100% / 3) !important;
+    max-width: 20em !important;
+    flex: initial !important;
+}
