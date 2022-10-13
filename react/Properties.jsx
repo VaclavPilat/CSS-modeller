@@ -49,7 +49,7 @@ class Properties extends React.Component {
                         <CustomProperty name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} removeStyleProperty={this.removeStyleProperty} />
                     ))}
                 </div>
-                <NewPropertyButtons addCustomProperty={this.addCustomProperty} />
+                <NewPropertyButtons addCustomProperty={this.addCustomProperty} styles={styles} />
             </Wrapper>
         );
     }

@@ -69,15 +69,21 @@ class NewPropertyButtons extends React.Component {
     }
     // Rendering component
     render(){
-        var items = ["background", "border", "height", "opacity", "rotate", "scale", "translate", "width"];
+        var properties = ["background", "border", "height", "opacity", "rotate", "scale", "translate", "width"];
+        Object.keys(this.props.styles).forEach((property) => {
+            var index = properties.indexOf(property);
+            if (index !== -1) {
+                properties.splice(index, 1);
+            }
+        });
         return(
             <div class="input-group m-0 w-100">
                 <input type="text" class="form-control bg-secondary bg-opacity-75 text-white border-secondary flex-grow-1" value="Add New Property" disabled />
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
                 <button type="button" class="btn btn-primary dropdown-toggle px-3" data-bs-toggle="dropdown" title="Common Properties"></button>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark">
-                    {items.map((item) => 
-                        <li><button class="dropdown-item" onClick={this.onItemClick}>{item}</button></li>
+                    {properties.map((property) => 
+                        <li><button class="dropdown-item" onClick={this.onItemClick}>{property}</button></li>
                     )}
                 </ul>
             </div>
