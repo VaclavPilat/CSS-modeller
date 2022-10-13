@@ -58,18 +58,25 @@ class NewPropertyButtons extends React.Component {
             value: event.target.value
         });
     }
+    // Adding new property
+    addNewProperty = (property) => {
+        this.props.addCustomProperty(property);
+        this.setState({
+            value: ""
+        });
+    }
     // Adding new property on Enter
     onEnterAddProperty = (event) => {
-        if(event.key === "Enter"){
-            this.props.addCustomProperty(event.target.value);
-            this.setState({
-                value: ""
-            });
-        }
+        if(event.key === "Enter")
+            this.addNewProperty(event.target.value);
+    }
+    // Adding new property on button click
+    onClickAddProperty = () => {
+        this.addNewProperty(this.state.value);
     }
     // Rendering component
     render(){
-        var properties = ["background", "border", "height", "opacity", "rotate", "scale", "translate", "width"];
+        var properties = ["background", "border", "height", "opacity", "position", "rotate", "scale", "translate", "width", "z-index"];
         Object.keys(this.props.styles).forEach((property) => {
             var index = properties.indexOf(property);
             if (index !== -1) {
@@ -79,15 +86,14 @@ class NewPropertyButtons extends React.Component {
         return(
             <div class="input-group m-0 w-100">
                 <input type="text" class="form-control bg-secondary bg-opacity-75 text-white border-secondary flex-grow-1" value="Add New Property" disabled />
-                <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
-                <button type="button" class="btn btn-primary dropdown-toggle px-3" data-bs-toggle="dropdown" title="Common Properties"></button>
-                <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" list="available-properties" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
+                <button class="btn btn-success rounded-end" title="Add Property" onClick={this.onClickAddProperty}><i class="bi bi-plus-lg"></i></button>
+                <datalist id="available-properties">
                     {properties.map((property) => 
-                        <li><button class="dropdown-item" onClick={this.onItemClick}>{property}</button></li>
+                        <option value={property} />
                     )}
-                </ul>
+                </datalist>
             </div>
-
         );
     }
 }
