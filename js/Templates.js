@@ -2,24 +2,28 @@
 const Templates = {
     Scene: 
         `<div data-modeller-title="scene" style="
-            width: 800px; height: 600px;
+            width: 100%; 
+            height: 100%;
         "></div>`,
     Empty: 
         `<div data-modeller-title="empty object" style=""></div>`,
     Square: 
         `<div data-modeller-title="square" style="
-            width: 100px; height: 100px; 
+            width: 100px; 
+            height: 100px; 
             background-color: lightblue;
         "></div>`,
     Circle: 
         `<div data-modeller-title="circle" style="
-            width: 100px; height: 100px; 
+            width: 100px; 
+            height: 100px; 
             background-color: lightgreen; 
             border-radius: 50%;
         "></div>`,
     Triangle:
         `<div data-modeller-title="triangle" style="
-            width: 0px; height: 0px; 
+            width: 0px; 
+            height: 0px; 
             border-bottom: 86.6025px solid lightyellow; 
             border-left: 50px solid transparent; 
             border-right: 50px solid transparent; 
