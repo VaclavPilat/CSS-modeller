@@ -48,6 +48,11 @@ class Properties extends React.Component {
         this.props.updateApplication();
         this.state.lastProperty = name;
     }
+    // Setting new name for current element
+    setNewElementName = (name) => {
+        this.props.currentElement.setAttribute("data-modeller-title", name);
+        this.props.updateApplication();
+    }
     // Rendering component
     render(){
         var lastProperty = this.state.lastProperty;
@@ -57,6 +62,7 @@ class Properties extends React.Component {
         return(
             <Wrapper>
                 <div class="m-0 mb-3 p-0">
+                    <ElementNameInput name={this.props.currentElement.getAttribute("data-modeller-title")} setNewElementName={this.setNewElementName} />
                 </div>
                 <div class="m-0 mb-3 p-0">
                     {Object.keys(styles).map((property) => (

@@ -103,3 +103,31 @@ class NewPropertyInput extends React.Component {
         );
     }
 }
+
+// Class for input for changing element name
+class ElementNameInput extends React.Component {
+    // Changing stored value
+    onInputChange = (event) => {
+        this.props.value = event.target.value;
+        this.forceUpdate();
+    }
+    // Saving element name on Enter
+    onEnterSave = (event) => {
+        if(event.key === "Enter")
+            this.setNewElementName();
+    }
+    // Saving new element name
+    setNewElementName = () => {
+        this.props.setNewElementName(this.props.value);
+    }
+    // Rendering component
+    render(){
+        return(
+            <div class="input-group m-0 w-100">
+                <span class="input-group-text bg-secondary bg-opacity-75 text-white border-secondary property-name">Name</span>
+                <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="New Element Name" onKeyPress={this.onEnterSave} onChange={this.onInputChange} value={this.props.value != null ? this.props.value : this.props.name} maxlength="40" />
+                <button class="btn btn-primary rounded-end" title="Add Property" onClick={this.setNewElementName}><i class="bi bi-check-lg"></i></button>
+            </div>
+        );
+    }
+}
