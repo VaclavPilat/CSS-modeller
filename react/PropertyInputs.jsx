@@ -51,8 +51,14 @@ class NewPropertyButtons extends React.Component {
     // Constructor
     constructor(){
         super();
+        var availableProperties = [];
+        var computedStyles = getComputedStyle(document.body);
+        Object.keys(computedStyles).filter(key => !computedStyles[key].startsWith("-") && key == parseInt(key).toString()).map(key => {
+            availableProperties.push(computedStyles[key]);
+        });
         this.state = {
-            value: ""
+            value: "",
+            availableProperties: availableProperties
         }
     }
     // Adding new style property
@@ -83,22 +89,15 @@ class NewPropertyButtons extends React.Component {
     }
     // Rendering component
     render(){
-        var properties = ["background", "border", "height", "opacity", "position", "rotate", "scale", "translate", "width", "z-index"];
-        Object.keys(this.props.styles).forEach((property) => {
-            var index = properties.indexOf(property);
-            if (index !== -1) {
-                properties.splice(index, 1);
-            }
-        });
         return(
             <div class="input-group m-0 w-100">
                 <input type="text" class="form-control bg-secondary bg-opacity-75 text-white border-secondary flex-grow-1" value="Add New Property" disabled />
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" list="available-properties" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
                 <button class="btn btn-success rounded-end" title="Add Property" onClick={this.onClickAddProperty}><i class="bi bi-plus-lg"></i></button>
                 <datalist id="available-properties">
-                    {properties.map((property) => 
-                        <option value={property} />
-                    )}
+                    {this.state.availableProperties.filter(property => !(property in this.props.styles)).map(property => {
+                        return <option value={property} />
+                    })}
                 </datalist>
             </div>
         );
