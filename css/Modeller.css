@@ -5,8 +5,23 @@
 [data-modeller-current="true"] {
     outline: 3px dashed var(--bs-danger);
     outline-offset: 2px;
+    animation-name: outline-resize;
+    animation-duration: .6s;
+    animation-iteration-count: 1;
 }
 
 #modeller * {
     box-sizing: initial;
+}
+
+@keyframes outline-resize {
+    0% {
+        outline-width: 3px;
+    }
+    50% {
+        outline-width: 5px;
+    }
+    100% {
+        outline-width: 3px;
+    }
 }
