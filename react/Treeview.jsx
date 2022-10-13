@@ -50,11 +50,11 @@ class TreeviewItem extends React.Component {
         var ID = createUniqueID();
         return (
             <li class="m-0 p-0">
-                <div class="input-group m-0 mt-1 p-0" draggable={!this.props.root} onDragStart={this.onDragStart} onDrop={this.onDrop} onDragOver={this.onDragOver}>
+                <div class="input-group m-0 mt-1 p-0 flex-nowrap w-100 " draggable={!this.props.root} onDragStart={this.onDragStart} onDrop={this.onDrop} onDragOver={this.onDragOver}>
                     {this.props.element.children.length > 0 && (
                         <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
                     )}
-                    <div class={"btn input-group-text flex-grow-1 text-uppercase text-start " + (this.props.current ? "bg-white bg-opacity-50 border-white border-opacity-50 text-black" : "bg-secondary bg-opacity-75 border-secondary border-opacity-75 text-white")} onClick={this.setCurrentElement}>{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</div>
+                    <div class={"btn input-group-text text-nowrap flex-fill overflow-hidden text-uppercase text-start " + (this.props.current ? "bg-white bg-opacity-50 border-white border-opacity-50 text-black" : "bg-secondary bg-opacity-75 border-secondary border-opacity-75 text-white")} onClick={this.setCurrentElement}>{this.props.element.getAttribute("data-modeller-title").replace("model-", "")}</div>
                     {!this.props.root ? (
                         <Wrapper>
                             <button class="btn btn-warning" onClick={this.duplicateElement} title="Duplicate Element"><i class="bi bi-files"></i></button>

@@ -32,7 +32,7 @@ class CustomProperty extends React.Component {
         if(this.props.focus)
             this.valueInput = React.createRef();
         return(
-            <div class="input-group mb-1">
+            <div class="input-group mb-1 w-100 flex-nowrap">
                 <input type="text" class="form-control bg-dark text-white border-secondary property-name" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} ref={this.valueInput} />
                 <button class="btn btn-danger" onClick={this.removeStyleProperty} title="Remove Property"><i class="bi bi-trash-fill"></i></button>
@@ -90,7 +90,7 @@ class NewPropertyInput extends React.Component {
     // Rendering component
     render(){
         return(
-            <div class="input-group m-0 w-100">
+            <div class="input-group m-0 w-100 flex-nowrap">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-secondary property-name">Add New</span>
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" list="available-properties" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
                 <button class="btn btn-success rounded-end" title="Add Property" onClick={this.onClickAddProperty}><i class="bi bi-plus-lg"></i></button>
@@ -123,7 +123,7 @@ class ElementNameInput extends React.Component {
     // Rendering component
     render(){
         return(
-            <div class="input-group m-0 w-100">
+            <div class="input-group m-0 w-100 flex-nowrap">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-secondary property-name">Name</span>
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="New Element Name" onKeyPress={this.onEnterSave} onChange={this.onInputChange} value={this.props.value != null ? this.props.value : this.props.name} maxlength="40" />
                 <button class="btn btn-primary rounded-end" title="Add Property" onClick={this.setNewElementName}><i class="bi bi-check-lg"></i></button>
