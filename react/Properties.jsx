@@ -57,11 +57,13 @@ class Properties extends React.Component {
         return(
             <Wrapper>
                 <div class="m-0 mb-3 p-0">
+                </div>
+                <div class="m-0 mb-3 p-0">
                     {Object.keys(styles).map((property) => (
                         <CustomProperty focus={lastProperty == property} name={property} value={styles[property]} onChangeHandler={this.setCustomProperty} removeStyleProperty={this.removeStyleProperty} />
                     ))}
                 </div>
-                <NewPropertyButtons addCustomProperty={this.addCustomProperty} styles={styles} />
+                <NewPropertyInput addCustomProperty={this.addCustomProperty} styles={styles} />
             </Wrapper>
         );
     }

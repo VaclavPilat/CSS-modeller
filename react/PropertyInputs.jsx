@@ -47,7 +47,7 @@ class CustomProperty extends React.Component {
 }
 
 // Class for property buttons
-class NewPropertyButtons extends React.Component {
+class NewPropertyInput extends React.Component {
     // Constructor
     constructor(){
         super();
