@@ -29,13 +29,20 @@ class CustomProperty extends React.Component {
     }
     // Rendering component
     render(){
+        if(this.props.focus)
+            this.valueInput = React.createRef();
         return(
             <div class="input-group mb-1">
                 <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
-                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
+                <input type="text" class="form-control bg-dark text-white border-secondary" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} ref={this.valueInput} />
                 <button class="btn btn-danger" onClick={this.removeStyleProperty} title="Remove Property"><i class="bi bi-trash-fill"></i></button>
             </div>
         );
+    }
+    // Focusing input if necessary
+    componentDidMount () {
+        if(this.valueInput)
+            this.valueInput.current.select();
     }
 }
 
