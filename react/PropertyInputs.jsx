@@ -72,7 +72,7 @@ class NewPropertyButtons extends React.Component {
         var items = ["background", "border", "height", "opacity", "rotate", "scale", "translate", "width"];
         return(
             <div class="input-group m-0 w-100">
-                <span class="input-group-text bg-secondary bg-opacity-75 text-white w-25 border-0">New</span>
+                <input type="text" class="form-control bg-secondary bg-opacity-75 text-white border-secondary flex-grow-1" value="Add New Property" disabled />
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="Property Name" onKeyPress={this.onEnterAddProperty} onChange={this.onInputChange} value={this.state.value} />
                 <button type="button" class="btn btn-primary dropdown-toggle px-3" data-bs-toggle="dropdown" title="Common Properties"></button>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark">

@@ -23,6 +23,6 @@
     margin-bottom: 0 !important;
 }
 
-#properties > .accordion-body > div:not(:has(div)) {
+#properties > .accordion-body > div:empty {
     margin-bottom: 0 !important;
 }
