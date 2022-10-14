@@ -36,14 +36,14 @@ const Templates = {
             transform-style: preserve-3d;
         ">
             <div data-modeller-title="cube - front" style="
-                translate: 0 0 -50px;
+                translate: 0 0 50px;
                 width: 100px; 
                 height: 100px; 
                 background-color: lightblue; 
                 position: absolute;
             "></div>
             <div data-modeller-title="cube - back" style="
-                translate: 0 0 50px;
+                translate: 0 0 -50px;
                 rotate: 0 1 0 180deg;
                 width: 100px; 
                 height: 100px; 
