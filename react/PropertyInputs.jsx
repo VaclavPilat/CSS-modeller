@@ -46,12 +46,7 @@ class CustomProperty extends React.Component {
                 {texts.length > 0 && (
                     <div class="m-0 p-0 collapse" id={ID}>
                         {texts.map(text => {
-                            return <div class="m-0 p-0 d-flex">
-                                    <div class="m-0 property-value-number text-light">{text}</div>
-                                    <div class="m-0 property-value-slider flex-fill d-flex">
-                                        <input type="range" class="form-range my-auto mx-0" />
-                                    </div>
-                                </div>;
+                            return <CustomPropertyValueSlider text={text} />;
                         })}
                     </div>
                 )}
@@ -62,6 +57,21 @@ class CustomProperty extends React.Component {
     componentDidMount () {
         if(this.valueInput)
             this.valueInput.current.select();
+    }
+}
+
+// Class for showing a numeric value in a custom property
+class CustomPropertyValueSlider extends React.Component {
+    // Rendering component
+    render () {
+        return (
+            <div class="m-0 p-0 d-flex">
+                <div class="m-0 property-value-number text-light">{this.props.text}</div>
+                <div class="m-0 property-value-slider flex-fill d-flex">
+                    <input type="range" class="form-range my-auto mx-0" />
+                </div>
+            </div>
+        );
     }
 }
 
