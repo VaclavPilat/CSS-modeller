@@ -2,12 +2,17 @@
     filter: brightness(0%) invert(100%);
 }
 
-#hierarchy button[data-bs-toggle="collapse"] > .bi::before {
+#hierarchy button[data-bs-toggle="collapse"] > .bi::before,
+#properties button[data-bs-toggle="collapse"] > .bi::before {
     transition: .2s all;
 }
 
 #hierarchy button[data-bs-toggle="collapse"].collapsed > .bi::before {
     transform: rotate(-90deg);
+}
+
+#properties button[data-bs-toggle="collapse"]:not(.collapsed) > .bi::before {
+    transform: rotate(180deg);
 }
 
 #hierarchy > div > ul > li > .input-group:first-of-type {
@@ -28,7 +33,16 @@
 }
 
 #properties .property-name {
+    flex: initial !important;
+}
+
+#properties .property-name,
+#properties .property-value-number {
     width: calc(100% / 3) !important;
     max-width: 20em !important;
-    flex: initial !important;
+}
+
+#properties .property-value-number,
+#properties .property-value-slider {
+    padding: calc(.375rem + 1px) calc(.75rem + 1px) !important;
 }

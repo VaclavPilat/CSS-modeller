@@ -31,11 +31,30 @@ class CustomProperty extends React.Component {
     render(){
         if(this.props.focus)
             this.valueInput = React.createRef();
+        var ID = createUniqueID();
+        var texts = [...this.props.value.matchAll(/(?<!\S)\d\S*/g)];
         return(
-            <div class="input-group mb-1 w-100 flex-nowrap">
-                <input type="text" class="form-control bg-dark text-white border-secondary property-name" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
-                <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} ref={this.valueInput} />
-                <button class="btn btn-danger" onClick={this.removeStyleProperty} title="Remove Property"><i class="bi bi-trash-fill"></i></button>
+            <div class="m-0 p-0 rounded mb-1 bg-secondary bg-opacity-75">
+                <div class="input-group w-100 flex-nowrap">
+                    <input type="text" class="form-control bg-dark text-white border-secondary property-name" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
+                    <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} ref={this.valueInput} />
+                    {texts.length > 0 && (
+                        <button class="btn btn-primary collapsed" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
+                    )}
+                    <button class="btn btn-danger" onClick={this.removeStyleProperty} title="Remove Property"><i class="bi bi-trash-fill"></i></button>
+                </div>
+                {texts.length > 0 && (
+                    <div class="m-0 p-0 collapse" id={ID}>
+                        {texts.map(text => {
+                            return <div class="m-0 p-0 d-flex">
+                                    <div class="m-0 property-value-number text-light">{text}</div>
+                                    <div class="m-0 property-value-slider flex-fill d-flex">
+                                        <input type="range" class="form-range my-auto mx-0" />
+                                    </div>
+                                </div>;
+                        })}
+                    </div>
+                )}
             </div>
         );
     }
@@ -126,7 +145,7 @@ class ElementNameInput extends React.Component {
             <div class="input-group m-0 w-100 flex-nowrap">
                 <span class="input-group-text bg-secondary bg-opacity-75 text-white border-secondary property-name">Name</span>
                 <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" placeholder="New Element Name" onKeyPress={this.onEnterSave} onChange={this.onInputChange} value={this.props.value != null ? this.props.value : this.props.name} maxlength="40" />
-                <button class="btn btn-primary rounded-end" title="Add Property" onClick={this.setNewElementName}><i class="bi bi-check-lg"></i></button>
+                <button class="btn btn-success rounded-end" title="Add Property" onClick={this.setNewElementName}><i class="bi bi-check-lg"></i></button>
             </div>
         );
     }
