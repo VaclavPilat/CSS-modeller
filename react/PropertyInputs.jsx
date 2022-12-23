@@ -27,16 +27,23 @@ class CustomProperty extends React.Component {
     removeStyleProperty = () => {
         this.props.removeStyleProperty(this.props.name);
     }
+    // Replacing numeric values
+    replaceValue = (startIndex, stopIndex, newValue) => {
+        let propertyValue = this.props.value.substring(0, startIndex);
+        propertyValue += newValue;
+        propertyValue += this.props.value.substring(stopIndex, this.props.value.length);
+        this.props.value = propertyValue;
+        this.applyChanges();
+    }
     // Getting numeric values
     getNumericValues = () => {
         let regex = /(?<=^|$|\s|,|\()-?\d+\.?\d*[^,;)\s]*/g;
         let elements = [];
         let match;
-        while (match = regex.exec(this.props.value)) {
+        while (match = regex.exec(this.props.value))
             elements.push(
-                <CustomPropertyValue before={this.props.value.substring(0, match.index)} current={match.toString()} after={this.props.value.substring(regex.lastIndex, this.props.value.length)} />
+                <CustomPropertyValue replaceValue={this.replaceValue} startIndex={match.index} stopIndex={regex.lastIndex} before={this.props.value.substring(0, match.index)} current={match.toString()} after={this.props.value.substring(regex.lastIndex, this.props.value.length)} />
             );
-        }
         return elements;
     }
     // Rendering component
@@ -88,31 +95,21 @@ class CustomPropertyValueContext extends React.Component {
 
 // Class for editing a numeric value in a custom property
 class CustomPropertyValue extends React.Component {
-    // Constructor
-    constructor (props){
-        super();
-        var number = parseInt(props.current);
-        this.state = {
-            old: number,
-            new: number,
-            lowerBound: 0,
-            upperBound: 100
-        };
-    }
     // On edit
     onInput = (event) => {
-        this.setState({
-            new: parseInt(event.target.value)
-        });
+        this.props.replaceValue(this.props.startIndex, this.props.stopIndex, this.props.current.replace(this.number, event.target.value));
+        //this.forceUpdate();
     }
     // Rendering component
     render () {
-        //var number = parseInt(props.text);
+        this.number = parseInt(this.props.current);
+        let lowerBound = 0;
+        let upperBound = 100;
         return (
             <div class="m-0 p-0 d-flex">
-                <CustomPropertyValueContext before={this.props.before} current={this.props.current.replace(this.state.old, this.state.new)} after={this.props.after} />
+                <CustomPropertyValueContext before={this.props.before} current={this.props.current} after={this.props.after} />
                 <div class="m-0 property-value-slider flex-fill d-flex">
-                    <input type="range" class="form-range my-auto mx-0" min={this.state.lowerBound} max={this.state.upperBound} value={this.state.new} onInput={this.onInput} />
+                    <input type="range" class="form-range my-auto mx-0" min={lowerBound} max={upperBound} value={this.number} onInput={this.onInput} />
                 </div>
             </div>
         );
