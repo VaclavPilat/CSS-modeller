@@ -27,27 +27,37 @@ class CustomProperty extends React.Component {
     removeStyleProperty = () => {
         this.props.removeStyleProperty(this.props.name);
     }
+    // Getting numeric values
+    getNumericValues = () => {
+        let regex = /(?<=^|$|\s|,|\()-?\d+\.?\d*[^,;)\s]*/g;
+        let elements = [];
+        let match;
+        while (match = regex.exec(this.props.value)) {
+            elements.push(
+                <CustomPropertyValueSlider before={this.props.value.substring(0, match.index)} current={match.toString()} after={this.props.value.substring(regex.lastIndex, this.props.value.length)} />
+            );
+        }
+        return elements;
+    }
     // Rendering component
     render(){
         if(this.props.focus)
             this.valueInput = React.createRef();
-        var ID = createUniqueID();
-        var texts = [...this.props.value.matchAll(/(?<!\S)\d\S*/g)];
+        let ID = createUniqueID();
+        let elements = this.getNumericValues();
         return(
             <div class="m-0 p-0 rounded mb-1 bg-secondary bg-opacity-75">
                 <div class="input-group w-100 flex-nowrap">
                     <input type="text" class="form-control bg-dark text-white border-secondary property-name" value={this.props.name} onChange={this.onNameChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} />
                     <input type="text" class="form-control bg-dark text-white border-secondary flex-grow-1" value={this.props.value} onChange={this.onValueChange} onKeyPress={this.applyChangesOnEnter} onBlur={this.applyChanges} ref={this.valueInput} />
-                    {texts.length > 0 && (
+                    {elements.length > 0 && (
                         <button class="btn btn-primary collapsed" data-bs-toggle="collapse" data-bs-target={"#" + ID}><i class="bi bi-chevron-down"></i></button>
                     )}
                     <button class="btn btn-danger" onClick={this.removeStyleProperty} title="Remove Property"><i class="bi bi-trash-fill"></i></button>
                 </div>
-                {texts.length > 0 && (
+                {elements.length > 0 && (
                     <div class="m-0 p-0 collapse" id={ID}>
-                        {texts.map(text => {
-                            return <CustomPropertyValueSlider text={text.toString()} />;
-                        })}
+                        {elements}
                     </div>
                 )}
             </div>
@@ -61,11 +71,27 @@ class CustomProperty extends React.Component {
 }
 
 // Class for showing a numeric value in a custom property
+class CustomPropertyValue extends React.Component {
+    // Rendering component
+    render () {
+        return (
+            <div class="m-0 property-value-number d-flex">
+                <div class="text-nowrap text-truncate text-white text-opacity-75">
+                    <bdi>{this.props.before}</bdi>
+                </div>
+                <div class="flex-shrink-1 text-nowrap text-truncate text-white fw-bold px-1">{this.props.current}</div>
+                <div class="text-nowrap text-truncate text-white text-opacity-75">{this.props.after}</div>
+            </div>
+        );
+    }
+}
+
+// Class for editing a numeric value in a custom property
 class CustomPropertyValueSlider extends React.Component {
     // Constructor
     constructor (props){
         super();
-        var number = parseInt(props.text);
+        var number = parseInt(props.current);
         this.state = {
             old: number,
             new: number,
@@ -84,7 +110,8 @@ class CustomPropertyValueSlider extends React.Component {
         //var number = parseInt(props.text);
         return (
             <div class="m-0 p-0 d-flex">
-                <div class="m-0 property-value-number text-light">{this.props.text.replace(this.state.old, this.state.new)}</div>
+                <CustomPropertyValue before={this.props.before} current={this.props.current.replace(this.state.old, this.state.new)} after={this.props.after} />
+
                 <div class="m-0 property-value-slider flex-fill d-flex">
                     <input type="range" class="form-range my-auto mx-0" min={this.state.lowerBound} max={this.state.upperBound} value={this.state.new} onInput={this.onInput} />
                 </div>

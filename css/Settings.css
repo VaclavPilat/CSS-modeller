@@ -46,3 +46,12 @@
 #properties .property-value-slider {
     padding: calc(.375rem + 1px) calc(.75rem + 1px) !important;
 }
+
+#properties .property-value-number > div:first-child {
+    direction: rtl;
+}
+
+#properties .property-value-number > div:first-child,
+#properties .property-value-number > div:last-child {
+    flex: 1 !important;
+}
