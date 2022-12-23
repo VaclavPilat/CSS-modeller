@@ -34,7 +34,7 @@ class CustomProperty extends React.Component {
         let match;
         while (match = regex.exec(this.props.value)) {
             elements.push(
-                <CustomPropertyValueSlider before={this.props.value.substring(0, match.index)} current={match.toString()} after={this.props.value.substring(regex.lastIndex, this.props.value.length)} />
+                <CustomPropertyValue before={this.props.value.substring(0, match.index)} current={match.toString()} after={this.props.value.substring(regex.lastIndex, this.props.value.length)} />
             );
         }
         return elements;
@@ -71,7 +71,7 @@ class CustomProperty extends React.Component {
 }
 
 // Class for showing a numeric value in a custom property
-class CustomPropertyValue extends React.Component {
+class CustomPropertyValueContext extends React.Component {
     // Rendering component
     render () {
         return (
@@ -87,7 +87,7 @@ class CustomPropertyValue extends React.Component {
 }
 
 // Class for editing a numeric value in a custom property
-class CustomPropertyValueSlider extends React.Component {
+class CustomPropertyValue extends React.Component {
     // Constructor
     constructor (props){
         super();
@@ -110,8 +110,7 @@ class CustomPropertyValueSlider extends React.Component {
         //var number = parseInt(props.text);
         return (
             <div class="m-0 p-0 d-flex">
-                <CustomPropertyValue before={this.props.before} current={this.props.current.replace(this.state.old, this.state.new)} after={this.props.after} />
-
+                <CustomPropertyValueContext before={this.props.before} current={this.props.current.replace(this.state.old, this.state.new)} after={this.props.after} />
                 <div class="m-0 property-value-slider flex-fill d-flex">
                     <input type="range" class="form-range my-auto mx-0" min={this.state.lowerBound} max={this.state.upperBound} value={this.state.new} onInput={this.onInput} />
                 </div>
