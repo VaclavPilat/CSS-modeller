@@ -30,7 +30,7 @@ class CustomProperty extends React.Component {
     // Replacing numeric values
     replaceValue = (startIndex, stopIndex, newValue) => {
         let propertyValue = this.props.value.substring(0, startIndex);
-        propertyValue += newValue;
+        propertyValue += newValue.toString();
         propertyValue += this.props.value.substring(stopIndex, this.props.value.length);
         this.props.value = propertyValue;
         this.applyChanges();
@@ -95,21 +95,29 @@ class CustomPropertyValueContext extends React.Component {
 
 // Class for editing a numeric value in a custom property
 class CustomPropertyValue extends React.Component {
+    // Constructor
+    constructor(props) {
+        super();
+        let number = parseInt(props.current);
+        this.state = {
+            lowerBound: number - 200,
+            upperBound: number + 200
+        };
+    }
     // On edit
     onInput = (event) => {
+        if(this.number == event.target.value)
+            return;
         this.props.replaceValue(this.props.startIndex, this.props.stopIndex, this.props.current.replace(this.number, event.target.value));
-        //this.forceUpdate();
     }
     // Rendering component
     render () {
         this.number = parseInt(this.props.current);
-        let lowerBound = 0;
-        let upperBound = 100;
         return (
             <div class="m-0 p-0 d-flex">
                 <CustomPropertyValueContext before={this.props.before} current={this.props.current} after={this.props.after} />
                 <div class="m-0 property-value-slider flex-fill d-flex">
-                    <input type="range" class="form-range my-auto mx-0" min={lowerBound} max={upperBound} value={this.number} onInput={this.onInput} />
+                    <input type="range" class="form-range my-auto mx-0" min={this.state.lowerBound} max={this.state.upperBound} value={this.number} onInput={this.onInput} />
                 </div>
             </div>
         );
