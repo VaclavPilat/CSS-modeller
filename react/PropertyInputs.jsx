@@ -104,8 +104,19 @@ class CustomPropertyValue extends React.Component {
             upperBound: number + 200
         };
     }
+    // Changing bounds if necessary
+    changeBounds = () => {
+        setTimeout(() => {
+            if(this.number <= this.state.lowerBound || this.number >= this.state.upperBound)
+                this.setState({
+                    lowerBound: this.number - 200,
+                    upperBound: this.number + 200
+                });
+        }, 1);
+    }
     // On edit
     onInput = (event) => {
+        console.log("input: " + event.target.value);
         if(this.number == event.target.value)
             return;
         this.props.replaceValue(this.props.startIndex, this.props.stopIndex, this.props.current.replace(this.number, event.target.value));
@@ -117,7 +128,7 @@ class CustomPropertyValue extends React.Component {
             <div class="m-0 p-0 d-flex">
                 <CustomPropertyValueContext before={this.props.before} current={this.props.current} after={this.props.after} />
                 <div class="m-0 property-value-slider flex-fill d-flex">
-                    <input type="range" class="form-range my-auto mx-0" min={this.state.lowerBound} max={this.state.upperBound} value={this.number} onInput={this.onInput} />
+                    <input type="range" class="form-range my-auto mx-0" min={this.state.lowerBound} max={this.state.upperBound} value={this.number} onInput={this.onInput} onMouseUp={this.changeBounds} />
                 </div>
             </div>
         );
